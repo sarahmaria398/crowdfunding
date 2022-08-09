@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Nav from './components/Nav';
 import HomePage from './pages/HomePage';
 import ProjectPage from './pages/ProjectPage';
+import LoginPage from './pages/LoginPage';
 import "./App.css";
 
 function App() {
@@ -14,7 +15,9 @@ function App() {
         <Routes >
           <Route exact path="/" element={<HomePage />}>
           </Route>
-          <Route exact path="/project" element={<ProjectPage />}>
+          <Route path="/login" element={<LoginPage />} >
+          </Route>
+          <Route exact path="/project/:id" element={<ProjectPage />}>
           </Route>
         </Routes>
       </div>
