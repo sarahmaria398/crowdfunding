@@ -6,7 +6,7 @@ function ProjectPage() {
     const { id } = useParams();
 
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}project/${id}`)
+        fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
             .then((results) => { return results.json(); })
             .then((data) => { setProjectData(data); });
     }, []);
@@ -21,7 +21,7 @@ function ProjectPage() {
             <ul>
                 {projectData.pledges.map((pledgeData, key) => {
                     return (
-                        <li>
+                        <li key={key}>
                             {pledgeData.amount} from {pledgeData.supporter}
                         </li>
                     );
