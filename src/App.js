@@ -7,6 +7,7 @@ import ProjectPage from './pages/ProjectPage';
 import LoginPage from './pages/LoginPage';
 import Footer from './components/Footer';
 import CreateProjectPage from './pages/CreateProjectPage';
+import RegisterPage from './pages/RegisterPage';
 import "./App.css";
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
           <Route exact path="/projects/:id" element={<ProjectPage />}>
           </Route>
           <Route exact path="/create-project" element={<CreateProjectPage />}>
+          </Route>
+          <Route exact path="/register" element={<RegisterPage />}>
           </Route>
         </Routes>
       </div>
