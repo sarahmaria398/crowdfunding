@@ -16,10 +16,13 @@ function HomePage() {
     }, [])
 
     return (
-        <div id="project-list">
-            {projectData.map((project, key) => {
-                return <ProjectCard key={key} projectData={project} />;
-            })}
+        <div>
+            <h3>Browse Projects</h3>
+            <div id="project-list">
+                {projectData.map((project, key) => {
+                    return <ProjectCard key={key} projectData={project} />;
+                })}
+            </div>
         </div>
     )
 }
