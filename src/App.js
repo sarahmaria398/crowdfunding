@@ -5,6 +5,7 @@ import Nav from './components/Nav';
 import HomePage from './pages/HomePage';
 import ProjectPage from './pages/ProjectPage';
 import LoginPage from './pages/LoginPage';
+import Footer from './components/Footer';
 import "./App.css";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           </Route>
         </Routes>
       </div>
+      <Footer />
     </Router>
   );
 }
