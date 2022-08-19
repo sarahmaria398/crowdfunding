@@ -17,11 +17,21 @@ function HomePage() {
 
     return (
         <div>
-            <h3>Browse Projects</h3>
-            <div id="project-list">
-                {projectData.map((project, key) => {
-                    return <ProjectCard key={key} projectData={project} />;
-                })}
+            <div id="hero-banner">
+                <div id="hero-banner-text">
+                    <h1>Donate your Time</h1>
+                    <p>There is no time like the present to make a difference.<br />Donate today.</p>
+                    <a href="#Projects" className="button" >Find Projects</a>
+                </div>
+            </div>
+            <div id="projects">
+                <h1>Browse Projects</h1>
+
+                <div id="project-list">
+                    {projectData.map((project, key) => {
+                        return <ProjectCard key={key} projectData={project} />;
+                    })}
+                </div>
             </div>
         </div>
     )
