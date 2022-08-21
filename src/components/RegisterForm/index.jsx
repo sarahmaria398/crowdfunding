@@ -37,8 +37,7 @@ function RegisterForm() {
         e.preventDefault();
         if (credentials.username && credentials.password && credentials.email) {
             postData().then((response) => {
-                window.localStorage.setItem("token", response.token);
-                navigate("/");
+                navigate("/login");
             });
         }
     };

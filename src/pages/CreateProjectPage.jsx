@@ -9,72 +9,40 @@ function CreateProjectPage() {
         description: "",
         goal: "",
         image: "",
+        date_created: new Date().toJSON()
     });
 
-    const inputs = [
-        {
-            id: 1,
-            name: "title",
-            type: "text",
-            placeholder: "Title"
-        },
-        {
-            id: 2,
-            name: "description",
-            type: "text",
-            placeholder: "Description"
-        },
-        {
-            id: 3,
-            name: "goal",
-            type: "text",
-            placeholder: "Goal"
-        },
-        {
-            id: 4,
-            name: "image",
-            type: "text",
-            placeholder: "Image URL"
-        }
-    ]
 
-    const { id } = useParams;
-    const navigate = useNavigate;
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { id, value } = e.target;
-        setProject((projectData) => ({
-            ...projectData,
-            [id]: value,
-        }));
+        setProject({ ...project, [id]: value })
     };
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (token && inputs)
+        if (token) {
             try {
                 const response = await fetch(
                     `${process.env.REACT_APP_API_URL}projects/`,
                     {
                         method: "post",
                         headers: {
+                            'Authorization': `Token ${token}`,
                             "Content-Type": "application/json",
                         },
-                        body: JSON.stringify({
-                            title: project.title,
-                            description: project.description,
-                            goal: project.goal,
-                            image: project.image
-                        }),
+                        body: JSON.stringify(project),
                     }
                 );
                 const data = await response.json();
                 console.log(data)
-                navigate(`/project`);
+                navigate(`/projects/${data.id}`);
             } catch (err) {
                 console.log(err)
             }
+        }
     };
 
     if (!token || token == null) {
@@ -85,22 +53,23 @@ function CreateProjectPage() {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                {inputs.map((input, key) => {
-                    return (
-                        <div key={`${key}-${input.id}`}>
-                            <label htmlFor={input.id}>
-                                {input.name}
-                            </label>
-                            <input>
-                                type={input.type}
-                                id={input.id}
-                                placeholder={input.placeholder}
-                                onChange={handleChange}
-                            </input>
-                        </div>
-                    )
-                })}
+            <form>
+                <div>
+                    <label htmlFor="title">Title:</label>
+                    <input type="text" id="title" placeholder="Title" onChange={handleChange} />
+                </div>
+                <div>
+                    <label htmlFor="description">Description:</label>
+                    <input type="text" id="description" placeholder="Description" onChange={handleChange} />
+                </div>
+                <div>
+                    <label htmlFor="goal">Goal:</label>
+                    <input type="time" id="goal" placeholder="Goal" onChange={handleChange} />
+                </div>
+                <div>
+                    <label htmlFor="image">URL Image:</label>
+                    <input type="text" id="image" placeholder="Image Url" onChange={handleChange} />
+                </div>
                 <button type="submit" onClick={handleSubmit}>
                     Create Project
                 </button>
