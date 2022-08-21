@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import DeleteProject from "../components/DeleteProject";
 
 function ProjectPage() {
+    const token = window.localStorage.getItem("token")
     const [projectData, setProjectData] = useState({ pledges: [] });
     const { id } = useParams();
 
@@ -11,6 +12,28 @@ function ProjectPage() {
             .then((results) => { return results.json(); })
             .then((data) => { setProjectData(data); });
     }, []);
+
+    const handleDelete = async (e) => {
+        {
+            fetch(
+                `${process.env.REACT_APP_API_URL}projects/${id}`, {
+                method: "DELETE",
+                headers: {
+                    'Authorization': `Token ${token}`,
+                    "Content-Type": "application/json"
+                }
+            })
+                .then(res => {
+                    if (res.ok) { console.log("HTTP request successful") }
+                    else { console.log("HTTP request unsuccessful") }
+                    return res
+                })
+                .then(res => res.json())
+                .then(data => console.log(data))
+                .catch(error => console.log)
+        }
+    };
+
 
 
     return (
@@ -31,7 +54,9 @@ function ProjectPage() {
                 })}
             </ul>
             <h3>Owner: {projectData.owner}</h3>
-            <Link to="/" onClick={DeleteProject(projectData.id)}>Delete</Link>
+
+            <button onClick={handleDelete}>Delete</button>
+
         </div>
     )
 }
