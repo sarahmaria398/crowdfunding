@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import DeleteProject from "../components/DeleteProject";
 
 function ProjectPage() {
     const [projectData, setProjectData] = useState({ pledges: [] });
@@ -30,6 +31,7 @@ function ProjectPage() {
                 })}
             </ul>
             <h3>Owner: {projectData.owner}</h3>
+            <Link to="/" onClick={DeleteProject(projectData.id)}>Delete</Link>
         </div>
     )
 }
