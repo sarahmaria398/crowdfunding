@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import CreateProjectPage from './pages/CreateProjectPage';
 import RegisterPage from './pages/RegisterPage';
 import "./App.css";
+import UpdateProjectPage from './pages/UpdateProjectPage';
 
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
           <Route exact path="/create-project" element={<CreateProjectPage />}>
           </Route>
           <Route exact path="/register" element={<RegisterPage />}>
+          </Route>
+          <Route exact path="/update-project" element={<UpdateProjectPage />}>
           </Route>
         </Routes>
       </div>

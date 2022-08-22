@@ -24,7 +24,7 @@ function ProjectPage() {
                 }
             })
                 .then(res => {
-                    if (res.ok) { console.log("HTTP request successful") }
+                    if (res.ok) { return (<h3>Successful delete!</h3>) }
                     else { console.log("HTTP request unsuccessful") }
                     return res
                 })
@@ -56,6 +56,7 @@ function ProjectPage() {
             <h3>Owner: {projectData.owner}</h3>
 
             <button onClick={handleDelete}>Delete</button>
+            <Link to="/update-project">Update Project</Link>
 
         </div>
     )
