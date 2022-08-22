@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 
 function CreateProject() {
     const token = window.localStorage.getItem("token")
+    const navigate = useNavigate();
     const [project, setProject] = useState({
         title: "",
         description: "",
@@ -10,9 +11,6 @@ function CreateProject() {
         image: "",
         date_created: new Date().toJSON()
     });
-
-
-    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { id, value } = e.target;

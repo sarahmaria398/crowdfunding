@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import DeleteProject from "../components/DeleteProject";
+import PledgeForm from "../components/PledgeForm";
 
 function ProjectPage() {
     const token = window.localStorage.getItem("token")
@@ -37,28 +37,35 @@ function ProjectPage() {
 
 
     return (
-        <div id="project-page">
-            <h2>{projectData.title} </h2>
-            <h2>Project Goal:{projectData.goal}</h2>
-            <img src={projectData.image} alt="project" />
-            <h3>Created at: {projectData.date_created}</h3>
-            <h3>{projectData.description}</h3>
-            <h3>Pledges:</h3>
-            <ul>
-                {projectData.pledges.map((pledgeData, key) => {
-                    return (
-                        <li key={key}>
-                            {pledgeData.amount} from {pledgeData.supporter}
-                        </li>
-                    );
-                })}
-            </ul>
-            <h3>Owner: {projectData.owner}</h3>
+        <div>
+            <div id="project-page">
+                <h2>{projectData.title} </h2>
+                <h2>Project Goal:{projectData.goal}</h2>
+                <img src={projectData.image} alt="project" />
+                <h3>Created at: {projectData.date_created}</h3>
+                <h3>{projectData.description}</h3>
+                <h3>Pledges:</h3>
+                <ul>
+                    {projectData.pledges.map((pledgeData, key) => {
+                        return (
+                            <li key={key}>
+                                {pledgeData.amount} from {pledgeData.supporter}
+                            </li>
+                        );
+                    })}
+                </ul>
+                <h3>Owner: {projectData.owner}</h3>
 
-            <button onClick={handleDelete}>Delete</button>
-            <Link to="/update-project">Update Project</Link>
+                <button onClick={handleDelete}>Delete</button>
+                <Link to="/update-project">Update Project</Link>
 
+            </div>
+            <div id="pledge">
+                <PledgeForm />
+            </div>
         </div>
+
+
     )
 }
 
