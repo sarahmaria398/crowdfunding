@@ -10,6 +10,7 @@ import CreateProjectPage from './pages/CreateProjectPage';
 import RegisterPage from './pages/RegisterPage';
 import "./App.css";
 import UpdateProjectPage from './pages/UpdateProjectPage';
+import AllUsersPage from './pages/AllUsersPage';
 
 function App() {
   return (
@@ -28,6 +29,8 @@ function App() {
           <Route exact path="/register" element={<RegisterPage />}>
           </Route>
           <Route exact path="/update-project" element={<UpdateProjectPage />}>
+          </Route>
+          <Route exact path="/users" element={<AllUsersPage />}>
           </Route>
         </Routes>
       </div>

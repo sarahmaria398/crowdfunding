@@ -47,10 +47,18 @@
   row-gap: 20px;
 }
 
+#project-page {}
 
 #project-page img {
   width: 20%;
 }
+
+#project-page-container {
+  display: flex;
+  justify-content: center;
+}
+
+#pledge {}
 
 #hero-banner-text h1 {
   font-size: 2.5rem;
@@ -98,4 +106,14 @@
 form {
   margin: 50px auto;
   width: 90%;
+}
+
+#user-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#users {
+  text-align: center;
 }

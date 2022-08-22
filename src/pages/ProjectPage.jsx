@@ -37,7 +37,7 @@ function ProjectPage() {
 
 
     return (
-        <div>
+        <div id="project-page-container">
             <div id="project-page">
                 <h2>{projectData.title} </h2>
                 <h2>Project Goal:{projectData.goal}</h2>
@@ -54,6 +54,7 @@ function ProjectPage() {
                         );
                     })}
                 </ul>
+
                 <h3>Owner: {projectData.owner}</h3>
 
                 <button onClick={handleDelete}>Delete</button>
@@ -61,7 +62,7 @@ function ProjectPage() {
 
             </div>
             <div id="pledge">
-                <PledgeForm />
+                <PledgeForm key={projectData.id} projectData={projectData} />
             </div>
         </div>
 

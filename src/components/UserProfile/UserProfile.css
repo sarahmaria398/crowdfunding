@@ -1,0 +1,7 @@
+.user-profile img {
+    height: 15rem;
+}
+
+.user-profile {
+    flex: 0 50%;
+}

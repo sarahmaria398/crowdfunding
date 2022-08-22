@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function PledgeForm() {
+function PledgeForm(props) {
+    const { projectData } = props;
+
     const navigate = useNavigate()
     const token = window.localStorage.getItem("token")
     const [pledges, setPledges] = useState({});
@@ -43,6 +45,7 @@ function PledgeForm() {
 
     return (
         <form>
+            <h2>Pledge to Project:</h2>
             <div>
                 <label htmlFor="Amount">Amount:</label>
                 <input type="time" id="amount" placeholder="Enter amount" onChange={handleChange} />
