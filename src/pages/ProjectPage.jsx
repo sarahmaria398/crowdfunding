@@ -7,6 +7,7 @@ function ProjectPage() {
     const [projectData, setProjectData] = useState({ pledges: [] });
     const { id } = useParams();
 
+
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
             .then((results) => { return results.json(); })
@@ -24,6 +25,7 @@ function ProjectPage() {
                 }
             })
                 .then(res => {
+                    // TODO: I WANTED IF SUCCESFFUL TO JUST RE ROUTE TO HOME PAGE, BUT IT DIDNT WORK.SAD FACE.
                     if (res.ok) { return (<h3>Successful delete!</h3>) }
                     else { console.log("HTTP request unsuccessful") }
                     return res
@@ -37,32 +39,34 @@ function ProjectPage() {
 
 
     return (
-        <div id="project-page-container">
-            <div id="project-page">
-                <h2>{projectData.title} </h2>
-                <h2>Project Goal:{projectData.goal}</h2>
-                <img src={projectData.image} alt="project" />
-                <h3>Created at: {projectData.date_created}</h3>
-                <h3>{projectData.description}</h3>
-                <h3>Pledges:</h3>
-                <ul>
-                    {projectData.pledges.map((pledgeData, key) => {
-                        return (
-                            <li key={key}>
-                                {pledgeData.amount} from {pledgeData.supporter}
-                            </li>
-                        );
-                    })}
-                </ul>
+        <div>
+            <h2 id="project-title">{projectData.title} </h2>
+            <div id="project-page-container">
+                <div id="project-page">
+                    <h2>Project Goal:{projectData.goal}</h2>
+                    <img src={projectData.image} alt="project" />
+                    <h3>Created at: {projectData.date_created}</h3>
+                    <h3>{projectData.description}</h3>
+                    <h3>Pledges:</h3>
+                    <ul>
+                        {projectData.pledges.map((pledgeData, key) => {
+                            return (
+                                <li key={key}>
+                                    {pledgeData.amount} from {pledgeData.supporter}
+                                </li>
+                            );
+                        })}
+                    </ul>
 
-                <h3>Owner: {projectData.owner}</h3>
+                    <h3>Owner: {projectData.owner}</h3>
 
-                <button onClick={handleDelete}>Delete</button>
-                <Link to="/update-project">Update Project</Link>
+                    <button onClick={handleDelete}>Delete</button>
+                    <Link to="/update-project">Update Project</Link>
 
-            </div>
-            <div id="pledge">
-                <PledgeForm key={projectData.id} projectData={projectData} />
+                </div>
+                <div id="pledge">
+                    <PledgeForm key={projectData.id} projectData={projectData} />
+                </div>
             </div>
         </div>
 

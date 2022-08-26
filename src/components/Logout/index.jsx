@@ -1,14 +1,11 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import React, { useState } from "react";
+// import { useNavigate } from "react-router-dom";
 
-function Logout() {
+// function Logout() {
+//     const [loggedIn, setLoggedIn] = useState(!!window.localStorage.getItem('token'));
 
-    return (
-        <div>
-            <a href="#" onClick={this.logout()}>LOGOUT</a>
-        </div>
-    )
+//     window.localStorage.removeItem('token');
+//     setLoggedIn(false)
+// }
 
-}
-
-export default Logout;
+// export default Logout;

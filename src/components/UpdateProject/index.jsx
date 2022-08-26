@@ -7,11 +7,11 @@ function UpdateProject() {
     const { id } = useParams();
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
-    //         .then((results) => { return results.json(); })
-    //         .then((data) => { setProjectData(data); });
-    // }, []);
+    useEffect(() => {
+        fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
+            .then((results) => { return results.json(); })
+            .then((data) => { setProjectData(data); });
+    }, []);
 
     const handleChange = (e) => {
         const { id, value } = e.target;

@@ -1,12 +1,10 @@
 nav {
     padding: 10px, 0px;
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 30px;
     font-size: 1.4rem;
     display: flex;
-    /* position: fixed; */
     justify-content: space-evenly;
-    /* padding: 25px 20%; */
     background-color: #fff;
     width: 100%;
     z-index: 25;
