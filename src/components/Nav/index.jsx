@@ -5,11 +5,10 @@ import "./Nav.css"
 function Nav() {
     const navigate = useNavigate()
 
-    // const [loggedIn, setLoggedIn] = useState(!!window.localStorage.getItem('token'));
+
     function logOut() {
         window.localStorage.removeItem('token');
-        // window.localStorage.getItem = false
-        // navigate('/')
+
     }
 
 

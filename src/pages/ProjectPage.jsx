@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import PledgeForm from "../components/PledgeForm";
 
 function ProjectPage() {
     const token = window.localStorage.getItem("token")
     const [projectData, setProjectData] = useState({ pledges: [] });
+    const [userName, setUserName] = useState("");
     const { id } = useParams();
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -14,7 +16,16 @@ function ProjectPage() {
             .then((data) => { setProjectData(data); });
     }, []);
 
-    const handleDelete = async (e) => {
+
+    useEffect(() => {
+        if (projectData.owner) {
+            fetch(`${process.env.REACT_APP_API_URL}users/${projectData.owner}`)
+                .then((results) => { return results.json(); })
+                .then((data) => { setUserName(data.username); });
+        }
+    }, [projectData]);
+
+    const handleDelete = (e) => {
         {
             fetch(
                 `${process.env.REACT_APP_API_URL}projects/${id}`, {
@@ -25,8 +36,7 @@ function ProjectPage() {
                 }
             })
                 .then(res => {
-                    // TODO: I WANTED IF SUCCESFFUL TO JUST RE ROUTE TO HOME PAGE, BUT IT DIDNT WORK.SAD FACE.
-                    if (res.ok) { return (<h3>Successful delete!</h3>) }
+                    if (res.ok) { console.log("HTTP request successful"); navigate("/") }
                     else { console.log("HTTP request unsuccessful") }
                     return res
                 })
@@ -35,7 +45,6 @@ function ProjectPage() {
                 .catch(error => console.log)
         }
     };
-
 
 
     return (
@@ -58,10 +67,10 @@ function ProjectPage() {
                         })}
                     </ul>
 
-                    <h3>Owner: {projectData.owner}</h3>
+                    <h3>Owner: {userName}</h3>
 
                     <button onClick={handleDelete}>Delete</button>
-                    <Link to="/update-project">Update Project</Link>
+                    {/* <Link to="/update-project">Update Project</Link> */}
 
                 </div>
                 <div id="pledge">

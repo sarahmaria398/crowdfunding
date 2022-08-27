@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link, useParams } from "react-router-dom";
+import ProjectCard from "../ProjectCard";
 
 function UpdateProject() {
     const token = window.localStorage.getItem("token")
@@ -36,7 +37,7 @@ function UpdateProject() {
                 );
                 const data = await response.json();
                 console.log(data)
-                navigate(`/projects/${id}`);
+                navigate(`/projects/${data.id}`);
             } catch (err) {
                 console.log(err)
             }
@@ -79,6 +80,12 @@ function UpdateProject() {
                 <img src={projectData.image} alt="project" />
                 <h3>Created at: {projectData.date_created}</h3>
                 <h3>{projectData.description}</h3>
+            </div> */}
+
+            {/* <div id="project-list">
+                {projectData.map((project, key) => {
+                    return <ProjectCard key={key} projectData={project} />;
+                })}
             </div> */}
         </div>
     )

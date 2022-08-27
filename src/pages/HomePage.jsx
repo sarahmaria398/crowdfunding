@@ -12,8 +12,12 @@ function HomePage() {
         // updateProjectData(allProjects)
         fetch(`${process.env.REACT_APP_API_URL}projects`)
             .then(res => res.json())
-            .then(data => updateProjectData(data))
+            .then(data => { console.log("data:", data); updateProjectData(data) })
+        console.log("hello", projectData)
     }, [])
+
+    console.log("2", projectData)
+
 
     return (
         <div>
@@ -28,8 +32,8 @@ function HomePage() {
                 <h1>Browse Projects</h1>
 
                 <div id="project-list">
-                    {projectData.map((project, key) => {
-                        return <ProjectCard key={key} projectData={project} />;
+                    {projectData.map((project, index) => {
+                        return <ProjectCard key={index} projectData={project} />;
                     })}
                 </div>
             </div>
