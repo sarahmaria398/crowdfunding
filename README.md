@@ -3,7 +3,7 @@ This project was bootstrapped with [Create React App]
 ## Crowdfunding website: for sports, fitness and health projects
 
 Deployed Heroku: https://peaceful-eyrie-80765.herokuapp.com/
-
+Login: Jeff, Jeff12345
 
 
 ## Available Scripts
