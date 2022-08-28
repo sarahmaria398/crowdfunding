@@ -10,7 +10,7 @@ import CreateProjectPage from './pages/CreateProjectPage';
 import RegisterPage from './pages/RegisterPage';
 import "./App.css";
 import UpdateProjectPage from './pages/UpdateProjectPage';
-import AllUsersPage from './pages/AllUsersPage';
+import UsersPage from './pages/UsersPage';
 
 function App() {
   return (
@@ -30,7 +30,7 @@ function App() {
           </Route>
           <Route exact path="/update-project" element={<UpdateProjectPage />}>
           </Route>
-          <Route exact path="/users" element={<AllUsersPage />}>
+          <Route exact path="/users/:id" element={<UsersPage />}>
           </Route>
         </Routes>
       </div>

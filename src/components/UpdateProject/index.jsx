@@ -73,20 +73,6 @@ function UpdateProject() {
                     Update Project
                 </button>
             </form>
-
-            {/* <div id="project-page">
-                <h2>{projectData.title} </h2>
-                <h2>Project Goal:{projectData.goal}</h2>
-                <img src={projectData.image} alt="project" />
-                <h3>Created at: {projectData.date_created}</h3>
-                <h3>{projectData.description}</h3>
-            </div> */}
-
-            {/* <div id="project-list">
-                {projectData.map((project, key) => {
-                    return <ProjectCard key={key} projectData={project} />;
-                })}
-            </div> */}
         </div>
     )
 

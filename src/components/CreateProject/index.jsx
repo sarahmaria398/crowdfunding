@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 function CreateProject() {
     const token = window.localStorage.getItem("token")
     const navigate = useNavigate();
+
     const [project, setProject] = useState({
         title: "",
         description: "",

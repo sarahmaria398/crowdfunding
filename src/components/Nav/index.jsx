@@ -11,7 +11,6 @@ function Nav() {
 
     }
 
-
     return (
         <nav>
             <Link to="/">Crowdfunding</Link>

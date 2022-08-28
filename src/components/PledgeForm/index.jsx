@@ -37,7 +37,6 @@ function PledgeForm() {
                 );
                 const data = await response.json();
                 console.log(data)
-                // navigate(`/projects/${id}`);
                 navigate("/")
             } catch (err) {
                 console.log(err)

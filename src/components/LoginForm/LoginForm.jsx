@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
     const navigate = useNavigate()
-    // navigate('/')
+
     const [credentials, setCredentials] = useState({
         username: "",
         password: ""
@@ -18,7 +18,6 @@ function LoginForm() {
     };
 
     const postData = async () => {
-        // called async await, promise: when waiting for data, continue doing other processes?
         const response = await fetch(
             `${process.env.REACT_APP_API_URL}api-token-auth/`,
             {
