@@ -61,7 +61,7 @@ function CreateProject() {
                 </div>
                 <div>
                     <label htmlFor="goal">Goal:</label>
-                    <input type="time" id="goal" placeholder="Goal" onChange={handleChange} />
+                    <input type="number" id="goal" placeholder="Goal" onChange={handleChange} />
                 </div>
                 <div>
                     <label htmlFor="image">URL Image:</label>

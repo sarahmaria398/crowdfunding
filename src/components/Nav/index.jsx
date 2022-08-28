@@ -14,14 +14,15 @@ function Nav() {
 
     return (
         <nav>
-            <Link to="/">Logo</Link>
+            <Link to="/">Crowdfunding</Link>
             <Link to="/">Home </Link>
-            <Link to="/register">Register </Link>
             {window.localStorage.getItem('token') ?
                 <> <Link to="/create-project">Create Project </Link>
                     <Link to="/" onClick={logOut}>Logout</Link>
                 </>
-                : <><Link to="/login">Login </Link></>}
+                : <>
+                    <Link to="/register">Register </Link>
+                    <Link to="/login">Login </Link></>}
         </nav >
     )
 }

@@ -12,11 +12,12 @@ function HomePage() {
         // updateProjectData(allProjects)
         fetch(`${process.env.REACT_APP_API_URL}projects`)
             .then(res => res.json())
-            .then(data => { console.log("data:", data); updateProjectData(data) })
-        console.log("hello", projectData)
+            .then(data => { updateProjectData(data) })
     }, [])
 
-    console.log("2", projectData)
+    if (!projectData) {
+        return "Projects loading..."
+    }
 
 
     return (

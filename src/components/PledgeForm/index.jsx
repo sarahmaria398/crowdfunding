@@ -1,44 +1,47 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-function PledgeForm(props) {
-    const { projectData } = props;
-
-    const navigate = useNavigate()
+function PledgeForm() {
     const token = window.localStorage.getItem("token")
-    const [pledges, setPledges] = useState({});
+    const [pledge, setPledge] = useState({});
+    const { id } = useParams();
+    const navigate = useNavigate()
 
     const handleChange = (e) => {
         const { id, value } = e.target;
-        setPledges((pledges) => ({
-            ...pledges,
+        setPledge((PledgeData) => ({
+            ...PledgeData,
             [id]: value,
         }));
     };
 
-    const postData = async () => {
-        const response = await fetch(
-            `${process.env.REACT_APP_API_URL}pledges/`,
-            {
-                method: "post",
-                headers: {
-                    'Authorization': `Token ${token}`,
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(pledges),
-            }
-        );
-        return response.json()
-    };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (pledges.amount) {
-            postData().then((response) => {
-                window.localStorage.setItem("token", response.token);
-                console.log("pledge created")
-                navigate("/projects/${id}");
-            });
+        if (pledge.amount) {
+            try {
+                const response = await fetch(
+                    `${process.env.REACT_APP_API_URL}pledges/`,
+                    {
+                        method: "post",
+                        headers: {
+                            'Authorization': `Token ${token}`,
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            amount: pledge.amount,
+                            comment: pledge.comment,
+                            project_id: parseInt(id)
+                        }),
+                    }
+                );
+                const data = await response.json();
+                console.log(data)
+                // navigate(`/projects/${id}`);
+                navigate("/")
+            } catch (err) {
+                console.log(err)
+            }
         }
     };
 
