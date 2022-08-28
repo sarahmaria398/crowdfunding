@@ -1,6 +1,10 @@
-# Getting Started with Create React App
+This project was bootstrapped with [Create React App]
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Crowdfunding website: for sports, fitness and health projects
+
+Deployed Heroku: https://peaceful-eyrie-80765.herokuapp.com/
+Login: Jeff, Jeff12345
+
 
 ## Available Scripts
 
