@@ -24,9 +24,9 @@ function HomePage() {
         <div>
             <div id="hero-banner">
                 <div id="hero-banner-text">
-                    <h1>Donate your Time</h1>
-                    <p>There is no time like the present to make a difference.<br />Donate today.</p>
-                    <a href="#projects" className="button" >Find Projects</a>
+                    <h1>Donate Today</h1>
+                    <p>Inspiring Health and Fitness in your Community.</p>
+                    <a href="#projects" className="button" >Find Local Projects</a>
                 </div>
             </div>
             <div id="projects">

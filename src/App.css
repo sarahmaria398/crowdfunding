@@ -53,7 +53,8 @@
 }
 
 #project-page img {
-  width: 100%;
+  width: 80%;
+  border-radius: 20px;
 }
 
 #project-page {
@@ -73,34 +74,35 @@
 
 
 #hero-banner-text h1 {
-  font-size: 2.5rem;
-  padding-left: 5rem;
+  font-size: 5rem;
   color: rgb(212, 207, 207);
+  padding-top: 3rem;
+  font-family: 'Poppins';
+  padding-left: 1rem;
 }
 
 #hero-banner-text a {
   font-size: 1.5rem;
-  padding-left: 5rem;
   color: rgb(212, 207, 207);
+  padding-left: 1rem;
 }
 
 #hero-banner-text p {
   color: rgb(212, 207, 207);
-  padding-left: 5rem;
-  margin: 2rem 0rem 1.5rem;
-  font-size: 2rem;
+  font-size: 2.8rem;
   line-height: 1.75;
   font-weight: 400;
+
 }
 
 #hero-banner {
-  height: 36rem;
+  height: 35rem;
   background-image: url(https://remserv.com.au/sites/default/files/styles/cta_image_style/public/media/image/Charity%20hero%20banner.jpg?itok=SnNcfg1l);
   background-color: rgba(0, 0, 0, 0.2);
   background-blend-mode: multiply;
   margin: 8px auto;
-  /* max-width: 72rem; */
   display: flex;
+  padding-left: 6rem;
 }
 
 
@@ -110,9 +112,11 @@
 }
 
 #projects h1 {
-  font-size: 2.5rem;
+  font-size: 3rem;
   text-align: center;
   color: rgb(54, 53, 53);
+  padding: 2rem;
+  font-family: 'Poppins';
 }
 
 form {
@@ -128,4 +132,93 @@ form {
 
 #users {
   text-align: center;
+}
+
+#project-page-container-bottom {
+  text-align: center;
+  padding-bottom: 5rem;
+}
+
+#login-pledge-button {
+  max-height: 20px;
+  ;
+}
+
+#button {
+  padding-top: 15rem;
+}
+
+.example_g {
+  /* font-family: 'SANS SERIF'; */
+  width: 320px;
+  height: 50px;
+  border: none;
+  outline: none;
+  color: #494949;
+  background: #ffffff;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 4px;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  transition: 0.5s ease-in-out;
+}
+
+.example_g:before {
+  content: '';
+  background: linear-gradient(45deg, #1e1e1d, #0e100e, #353735, #727a79, #b0b3b6, #e4e4e7, #828285, #403f41, #1e1e1d);
+  /* background: linear-gradient(45deg, #FF0000, #FFF700, #FF7000, #FF00FE, #3FF4EB, #9E00FF, #00BEFF, #FF00DD, #FF0000); */
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+}
+
+.example_g:active {
+  color: #000
+}
+
+.example_g:active:after {
+  background: transparent;
+}
+
+.example_g:hover {
+  transform: scale(1.05);
+}
+
+.example_g:hover:before {
+  opacity: 1;
+}
+
+.example_g:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  left: 0;
+  top: 0;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 400% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
 }

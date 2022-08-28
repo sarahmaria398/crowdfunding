@@ -41,9 +41,6 @@ function ProjectPage() {
 
     console.log({ pledgerName })
 
-    if (!projectData.pledges) {
-        return "This Project is yet to have some pledges, be the first!"
-    }
 
     const handleDelete = (e) => {
         {
@@ -73,18 +70,20 @@ function ProjectPage() {
             <h2 id="project-title">{projectData.title} </h2>
             <div id="project-page-container">
                 <div id="project-page">
-                    <h2>Project Goal:{projectData.goal}</h2>
+                    <h2>Project Goal: ${projectData.goal}</h2>
                     <img src={projectData.image} alt="project" />
-                    <h3>Created at: {projectData.date_created}</h3>
+                    {/* <h3>Created at: {projectData.date_created}</h3> */}
                     <h3>{projectData.description}</h3>
+
+
                     <h3>Pledges:</h3>
                     <ul>
                         {projectData.pledges.map((pledgeData, key) => {
                             return (
                                 <li key={key}>
-                                    {pledgeData.amount} from {pledgerName} {pledgeData.supporter}
+                                    ${pledgeData.amount} from {pledgerName} {pledgeData.supporter}
                                     <br></br>
-                                    {pledgeData.comment}
+                                    "{pledgeData.comment}"
                                 </li>
                             );
                         })}
@@ -92,15 +91,23 @@ function ProjectPage() {
 
                     <h3>Owner: {userName}</h3>
                     {/* //we call the variable in which we saved the username of the User object which we called on second use effect */}
-                    {window.localStorage.getItem('token') ?
+                    {/* {window.localStorage.getItem('token') ?
                         <button onClick={handleDelete}>Delete</button> :
-                        ''}
+                        ''} */}
                     {/* <Link to="/update-project">Update Project</Link> */}
 
+
+
                 </div>
-                <div id="pledge">
-                    <PledgeForm />
-                </div>
+                {window.localStorage.getItem('token') ?
+                    <div id="pledge">
+                        <PledgeForm />
+                    </div> :
+                    <Link type="button" to="/login">Login to Pledge!</Link>
+                }
+            </div>
+            <div id="project-page-container-bottom">
+                <Link to="/">View More Projects</Link>
             </div>
         </div>
 

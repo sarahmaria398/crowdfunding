@@ -51,7 +51,7 @@ function PledgeForm() {
             <h2>Pledge to Project:</h2>
             <div>
                 <label htmlFor="Amount">Amount:</label>
-                <input type="time" id="amount" placeholder="Enter amount" onChange={handleChange} />
+                <input type="number" id="amount" placeholder="Enter amount" onChange={handleChange} />
             </div>
             <div>
                 <label htmlFor="comment">Comment:</label>

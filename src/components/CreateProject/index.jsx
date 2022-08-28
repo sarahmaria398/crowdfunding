@@ -60,7 +60,7 @@ function CreateProject() {
                     <input type="text" id="description" placeholder="Description" onChange={handleChange} />
                 </div>
                 <div>
-                    <label htmlFor="goal">Goal:</label>
+                    <label htmlFor="goal">Goal (in dollars):</label>
                     <input type="number" id="goal" placeholder="Goal" onChange={handleChange} />
                 </div>
                 <div>
