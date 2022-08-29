@@ -1,4 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Notable&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=League+Spartan:wght@200&family=Notable&display=swap');
+
+p {
+  font-family: 'League Spartan', sans-serif;
+}
+
+h2 {
+  font-family: 'League Spartan', sans-serif;
+}
+
+h3 {
+  font-family: 'League Spartan', sans-serif;
+}
 
 .App {
   text-align: center;
@@ -51,7 +63,7 @@
 
 #project-title {
   text-align: center;
-  font-size: 3rem;
+  font-size: 4rem;
 }
 
 #project-page img {
@@ -59,8 +71,20 @@
   border-radius: 20px;
 }
 
+#project-page h2 {
+  font-size: 1.9rem;
+}
+
+#project-page p {
+  font-size: 2rem;
+}
+
 #project-page {
   width: 40%;
+}
+
+#project-page h3 {
+  font-size: 1.6rem;
 }
 
 #project-page-container {
@@ -103,7 +127,7 @@
   background-blend-mode: multiply;
   margin: 8px auto;
   display: flex;
-  padding-left: 6rem;
+  padding-left: 13rem;
 }
 
 #how-to {

@@ -34,8 +34,9 @@ function ProjectPage() {
     }, [projectData]);
 
     console.log({ pledgerName })
+    // currently returns an object? 
 
-
+    // TODO: use my delete, render it conditionally: only if the logged in user is the project owner 
     const handleDelete = (e) => {
         {
             fetch(
@@ -64,8 +65,10 @@ function ProjectPage() {
             <div id="project-page-container">
                 <div id="project-page">
                     <h2>Project Goal: ${projectData.goal}</h2>
+                    {/* TODO: how to show variable which capture the continual increase of Pledge amount */}
+                    <h3>{ }amount raised of ${projectData.goal}</h3>
                     <img src={projectData.image} alt="project" />
-                    <h3>{projectData.description}</h3>
+                    <h3>Description: {projectData.description}</h3>
 
 
                     <h3>Pledges:</h3>
@@ -73,6 +76,7 @@ function ProjectPage() {
                         {projectData.pledges.map((pledgeData, key) => {
                             return (
                                 <li key={key}>
+                                    {/* TODO: trying to extract pledger name the same way owner name was extracted */}
                                     ${pledgeData.amount} from {pledgerName} {pledgeData.supporter}
                                     <br></br>
                                     "{pledgeData.comment}"
@@ -81,8 +85,8 @@ function ProjectPage() {
                         })}
                     </ul>
                     <div id="owner-style">
-                        <h3 >Owner: </h3>
-                        <a href={"/users/" + projectData.owner}><h3>{userName}</h3></a>
+                        <h3 >Creator: </h3>
+                        <a href={"/users/" + projectData.owner}><h3>  {userName}</h3></a>
                     </div>
 
                 </div>
