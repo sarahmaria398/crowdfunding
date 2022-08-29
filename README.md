@@ -1,10 +1,22 @@
-This project was bootstrapped with [Create React App]
 
-## Crowdfunding website: for sports, fitness and health projects
+
+## Crowdfunding website for: New Game Ideas!
 
 Deployed Heroku: https://peaceful-eyrie-80765.herokuapp.com/
 Login: Jeff, Jeff12345
 
+# Current Features:
+- Browse Home Page of New Projects
+- Register New User Form
+- Login
+- Create New Crowdfunding Project
+- Pledge to a Project
+- Link to User Profile 
+
+- More to Come!
+
+
+This project was bootstrapped with [Create React App]
 
 ## Available Scripts
 
