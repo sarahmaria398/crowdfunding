@@ -80,8 +80,10 @@ function ProjectPage() {
                             );
                         })}
                     </ul>
-
-                    <h3>Owner: {userName}</h3>
+                    <div id="owner-style">
+                        <h3 >Owner: </h3>
+                        <a href={"/users/" + projectData.owner}><h3>{userName}</h3></a>
+                    </div>
 
                 </div>
                 {window.localStorage.getItem('token') ?

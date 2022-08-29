@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Notable&display=swap');
+
 .App {
   text-align: center;
 }
@@ -74,41 +76,45 @@
 
 
 #hero-banner-text h1 {
-  font-size: 5rem;
-  color: rgb(212, 207, 207);
-  padding-top: 3rem;
-  font-family: 'Poppins';
-  padding-left: 1rem;
+  font-size: 7rem;
+  color: rgb(255, 255, 255);
+  padding-top: 2rem;
+}
+
+#hero-banner-text p {
+  color: rgb(255, 255, 255);
+  font-size: 2.8rem;
+  line-height: 1.75;
+  font-weight: 400;
 }
 
 #hero-banner-text a {
   font-size: 1.5rem;
-  color: rgb(212, 207, 207);
-  padding-left: 1rem;
+  color: rgb(255, 255, 255);
+  padding-left: 1.5rem;
 }
 
-#hero-banner-text p {
-  color: rgb(212, 207, 207);
-  font-size: 2.8rem;
-  line-height: 1.75;
-  font-weight: 400;
 
-}
 
 #hero-banner {
   height: 35rem;
-  background-image: url(https://remserv.com.au/sites/default/files/styles/cta_image_style/public/media/image/Charity%20hero%20banner.jpg?itok=SnNcfg1l);
-  background-color: rgba(0, 0, 0, 0.2);
+  background-image: url(https://static.vecteezy.com/system/resources/previews/002/196/579/original/modern-abstract-geometric-background-free-vector.jpg);
+  background-color: rgba(0, 0, 0, 0.6);
   background-blend-mode: multiply;
   margin: 8px auto;
   display: flex;
   padding-left: 6rem;
 }
 
+#how-to {
+  background-image: url(/src/lightblub.svg)
+}
+
 
 #hero-banner-text {
-  margin: 70px 15px 0px 15px;
   align-items: center;
+  padding-left: 3rem;
+  font-family: 'Aboreto', cursive;
 }
 
 #projects h1 {
@@ -116,7 +122,7 @@
   text-align: center;
   color: rgb(54, 53, 53);
   padding: 2rem;
-  font-family: 'Poppins';
+  font-family: 'Aboreto', cursive;
 }
 
 form {
@@ -221,4 +227,19 @@ form {
   100% {
     background-position: 0 0;
   }
+}
+
+#owner-style {
+  display: flex;
+}
+
+.user-profile {
+  padding-top: 5rem;
+  display: block;
+  text-align: center;
+}
+
+.user-profile img {
+  border-radius: 60%;
+  max-height: 20rem;
 }

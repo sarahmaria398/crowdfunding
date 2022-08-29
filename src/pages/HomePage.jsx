@@ -19,13 +19,13 @@ function HomePage() {
         <div>
             <div id="hero-banner">
                 <div id="hero-banner-text">
-                    <h1>Donate Today</h1>
-                    <p>Inspiring Health and Fitness in your Community.</p>
-                    <a href="#projects" className="button" >Find Local Projects</a>
+                    <h1>Game Now</h1>
+                    <p>Crowdfunding for Game ideas</p>
+                    <a href="#projects" className="button" >Find Games Now</a>
                 </div>
             </div>
             <div id="projects">
-                <h1>Browse Projects</h1>
+                <h1>Browse New Games</h1>
 
                 <div id="project-list">
                     {projectData.map((project, index) => {
