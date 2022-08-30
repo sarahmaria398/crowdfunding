@@ -23,13 +23,13 @@ function ProjectPage() {
                 .then((results) => { return results.json(); })
                 .then((data) => { setUserName(data.username); });
         }
-    }, [projectData]);
-
-    useEffect(() => {
-        if (projectData.pledges.supporter) {
-            fetch(`${process.env.REACT_APP_API_URL}users/${projectData.pledges.supporter}`)
-                .then((results) => { return results.json(); })
-                .then((data) => { setPledgerName(data.username); });
+        console.log("pledges: ", projectData.pledges)
+        // if (projectData.pledges[0] && projectData.pledges[0].supporter) {
+        // mpa returns, check length of pledges, loop through list for each index, make api acall. store an array of pledges, 
+        if (projectData.pledges?.[0]?.supporter) {
+            fetch(`${process.env.REACT_APP_API_URL}users/${projectData.pledges[0].supporter}`)
+                .then((results) => { console.log(results); return results.json(); })
+                .then((data) => { console.log(data); setPledgerName(data.username); });
         }
     }, [projectData]);
 
@@ -77,7 +77,7 @@ function ProjectPage() {
                             return (
                                 <li key={key}>
                                     {/* TODO: trying to extract pledger name the same way owner name was extracted */}
-                                    ${pledgeData.amount} from {pledgerName} {pledgeData.supporter}
+                                    ${pledgeData.amount} from {pledgerName}
                                     <br></br>
                                     "{pledgeData.comment}"
                                 </li>
