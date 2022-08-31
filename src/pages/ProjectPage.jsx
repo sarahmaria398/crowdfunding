@@ -13,6 +13,7 @@ function ProjectPage() {
     // const User = useContext(CurrentUser);
 
     const numrows = [projectData.pledges].length
+    const arrayNames = []
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
@@ -26,22 +27,22 @@ function ProjectPage() {
                 .then((results) => { return results.json(); })
                 .then((data) => { setUserName(data.username); });
         }
-        console.log("pledges: ", projectData.pledges)
-        // if (projectData.pledges[0] && projectData.pledges[0].supporter) {
-        // mpa returns, check length of pledges, loop through list for each index, make api acall. store an array of pledges, 
     }, [projectData]);
+
+    // if (projectData.pledges[0] && projectData.pledges[0].supporter) {
+    // mpa returns, check length of pledges, loop through list for each index, make api acall. store an array of pledges, 
 
     useEffect(() => {
         if (projectData.owner)
-            for (let i = 0; i < numrows; i++) {
+            for (let i = 0; i <= numrows; i++) {
 
                 if (projectData.pledges?.[i]?.supporter) {
                     fetch(`${process.env.REACT_APP_API_URL}users/${projectData.pledges[i].supporter}`)
                         .then((results) => { console.log(results); return results.json(); })
-                        .then((data) => { console.log(data); setPledgerName(data.username); });
+                        .then((data) => { arrayNames.push(data.username); console.log("arrayNames: ", arrayNames); setPledgerName(data.username); })
                 }
             }
-    }, [pledgerName]);
+    }, [projectData]);
 
 
     // TODO: use my delete, render it conditionally: only if the logged in user is the project owner 
