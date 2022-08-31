@@ -1,8 +1,27 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+// import { Auth } from 'aws-amplify';
+// import { useEffect } from "react";
 
 function LoginForm() {
     const navigate = useNavigate()
+
+    // const [error, setError] = useState(null);
+    // const [username, setUserName] = useState('');
+
+    // useEffect(() => {
+    //     try {
+    //         Auth.currentAuthenticatedUser({
+    //             bypassCache: false
+    //         }).then(user => {
+    //             setUserName(user.username);
+    //             console.log(`Load additiona setting for: ${user.username}`);
+    //         }).catch(err => console.log(err));
+    //     }
+    //     catch (e) {
+    //         setError(e);
+    //     }
+    // }, []);
 
     const [credentials, setCredentials] = useState({
         username: "",
@@ -35,8 +54,10 @@ function LoginForm() {
         e.preventDefault();
         if (credentials.username && credentials.password) {
             postData().then((response) => {
+                // const thisUser = await Parse.User.currentAsync();
                 window.localStorage.setItem("token", response.token);
                 console.log("logged in")
+                // console.log({ thisUser })
                 navigate("/");
             });
         }

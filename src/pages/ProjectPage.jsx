@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import PledgeForm from "../components/PledgeForm";
+// import { CurrentUser } from "../Context";
 
 function ProjectPage() {
     const token = window.localStorage.getItem("token")
@@ -9,7 +10,9 @@ function ProjectPage() {
     const [pledgerName, setPledgerName] = useState("");
     const { id } = useParams();
     const navigate = useNavigate();
+    // const User = useContext(CurrentUser);
 
+    const numrows = [projectData.pledges].length
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
@@ -26,17 +29,24 @@ function ProjectPage() {
         console.log("pledges: ", projectData.pledges)
         // if (projectData.pledges[0] && projectData.pledges[0].supporter) {
         // mpa returns, check length of pledges, loop through list for each index, make api acall. store an array of pledges, 
-        if (projectData.pledges?.[0]?.supporter) {
-            fetch(`${process.env.REACT_APP_API_URL}users/${projectData.pledges[0].supporter}`)
-                .then((results) => { console.log(results); return results.json(); })
-                .then((data) => { console.log(data); setPledgerName(data.username); });
-        }
     }, [projectData]);
 
-    console.log({ pledgerName })
-    // currently returns an object? 
+    useEffect(() => {
+        if (projectData.owner)
+            for (let i = 0; i < numrows; i++) {
+
+                if (projectData.pledges?.[i]?.supporter) {
+                    fetch(`${process.env.REACT_APP_API_URL}users/${projectData.pledges[i].supporter}`)
+                        .then((results) => { console.log(results); return results.json(); })
+                        .then((data) => { console.log(data); setPledgerName(data.username); });
+                }
+            }
+    }, [pledgerName]);
+
 
     // TODO: use my delete, render it conditionally: only if the logged in user is the project owner 
+
+
     const handleDelete = (e) => {
         {
             fetch(
@@ -70,8 +80,8 @@ function ProjectPage() {
                     <img src={projectData.image} alt="project" />
                     <h3>Description: {projectData.description}</h3>
 
+                    {projectData.pledges[0] ? <h3>Pledges:</h3> : ''}
 
-                    <h3>Pledges:</h3>
                     <ul>
                         {projectData.pledges.map((pledgeData, key) => {
                             return (
@@ -84,10 +94,14 @@ function ProjectPage() {
                             );
                         })}
                     </ul>
+
                     <div id="owner-style">
                         <h3 >Creator: </h3>
                         <a href={"/users/" + projectData.owner}><h3>  {userName}</h3></a>
                     </div>
+
+                    {/* {projectData.owner === User ?
+                        <button onClick={handleDelete}>delete</button> : ''} */}
 
                 </div>
                 {window.localStorage.getItem('token') ?
