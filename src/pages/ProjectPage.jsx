@@ -4,18 +4,18 @@ import PledgeForm from "../components/PledgeForm";
 // import { CurrentUser } from "../Context";
 
 function ProjectPage() {
+    console.log(" ")
+    console.log(" ")
+    console.log(" ")
+    console.log(" ")
     const token = window.localStorage.getItem("token")
     const [projectData, setProjectData] = useState({ pledges: [] });
     const [userName, setUserName] = useState("");
-    const [pledgerName, setPledgerName] = useState("");
-    const [totalAmount, setTotalAmount] = useState("");
+    const [pledgerNames, setPledgerNames] = useState([]);
+    const [totalAmount, setTotalAmount] = useState(0);
     const { id } = useParams();
     const navigate = useNavigate();
     // const User = useContext(CurrentUser);
-
-    const numrows = [projectData.pledges].length
-    const arrayNames = []
-    const totalPledgedAmount = 0;
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
@@ -31,28 +31,27 @@ function ProjectPage() {
         }
     }, [projectData]);
 
-    // if (projectData.pledges[0] && projectData.pledges[0].supporter) {
-    // mpa returns, check length of pledges, loop through list for each index, make api acall. store an array of pledges, 
 
     useEffect(() => {
-        if (projectData.pledges)
-            for (let i = 0; i <= numrows; i++) {
+        if (projectData.pledges.length > 0)
+            for (let i = 0; i <= projectData.pledges.length; i++) {
 
                 if (projectData.pledges?.[i]?.supporter) {
                     fetch(`${process.env.REACT_APP_API_URL}users/${projectData.pledges[i].supporter}`)
                         .then((results) => { console.log(results); return results.json(); })
-                        .then((data) => { arrayNames.push(data.username); console.log("arrayNames: ", arrayNames); setPledgerName(data.username); })
+                        .then((data) => { console.log("data username: ", data.username); setPledgerNames(() => [...pledgerNames, data.username]) })
                 }
 
                 if (projectData.pledges?.[i]?.amount) {
                     fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
                         .then((results) => { console.log(results); return results.json(); })
-                        .then((data) => { setTotalAmount(data.amount); console.log("total amount", totalAmount) })
-                    // .then((data) => { totalPledgedAmount += data.amount })
+                        .then((data) => { setTotalAmount(data.pledges.amount); console.log("total amount", totalAmount) })
                 }
             }
     }, [projectData]);
 
+    console.log("project data pledges", projectData.pledges)
+    console.log("pledgers name", pledgerNames)
 
     // TODO: use my delete, render it conditionally: only if the logged in user is the project owner 
 
@@ -93,15 +92,11 @@ function ProjectPage() {
                     {projectData.pledges[0] ? <h3>Pledges:</h3> : 'No Pledges yet, be the first!'}
 
                     <ul>
-                        {projectData.pledges.map((pledgeData, key) => {
+                        {projectData.pledges.map((pledgeData, index) => {
                             return (
-                                <li key={key}>
-                                    {/* TODO: trying to extract pledger name the same way owner name was extracted */}
-                                    ${pledgeData.amount} from {pledgerName}
-                                    {/* {arrayNames ?
-                                    for (let i = numrows; i <= numrows; i++) {
-                                        arrayNames[i]
-                                    } : ''} */}
+                                <li key={index}>
+
+                                    ${pledgeData.amount} from {pledgerNames[index]}
 
                                     <br></br>
                                     "{pledgeData.comment}"
@@ -115,8 +110,8 @@ function ProjectPage() {
                         <a href={"/users/" + projectData.owner}><h3>  {userName}</h3></a>
                     </div>
 
-                    {/* {projectData.owner === User ?
-                        <button onClick={handleDelete}>delete</button> : ''} */}
+                    <button onClick={handleDelete}>delete</button>
+                    <h5>You will only be able to delete if you own the project!</h5>
 
                 </div>
                 {window.localStorage.getItem('token') ?
