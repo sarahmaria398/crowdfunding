@@ -8,12 +8,14 @@ function ProjectPage() {
     const [projectData, setProjectData] = useState({ pledges: [] });
     const [userName, setUserName] = useState("");
     const [pledgerName, setPledgerName] = useState("");
+    const [totalAmount, setTotalAmount] = useState("");
     const { id } = useParams();
     const navigate = useNavigate();
     // const User = useContext(CurrentUser);
 
     const numrows = [projectData.pledges].length
     const arrayNames = []
+    const totalPledgedAmount = 0;
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
@@ -33,13 +35,20 @@ function ProjectPage() {
     // mpa returns, check length of pledges, loop through list for each index, make api acall. store an array of pledges, 
 
     useEffect(() => {
-        if (projectData.owner)
+        if (projectData.pledges)
             for (let i = 0; i <= numrows; i++) {
 
                 if (projectData.pledges?.[i]?.supporter) {
                     fetch(`${process.env.REACT_APP_API_URL}users/${projectData.pledges[i].supporter}`)
                         .then((results) => { console.log(results); return results.json(); })
                         .then((data) => { arrayNames.push(data.username); console.log("arrayNames: ", arrayNames); setPledgerName(data.username); })
+                }
+
+                if (projectData.pledges?.[i]?.amount) {
+                    fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
+                        .then((results) => { console.log(results); return results.json(); })
+                        .then((data) => { setTotalAmount(data.amount); console.log("total amount", totalAmount) })
+                    // .then((data) => { totalPledgedAmount += data.amount })
                 }
             }
     }, [projectData]);
@@ -77,11 +86,11 @@ function ProjectPage() {
                 <div id="project-page">
                     <h2>Project Goal: ${projectData.goal}</h2>
                     {/* TODO: how to show variable which capture the continual increase of Pledge amount */}
-                    <h3>{ }amount raised of ${projectData.goal}</h3>
+                    <h3>{totalAmount}amount raised of ${projectData.goal}</h3>
                     <img src={projectData.image} alt="project" />
                     <h3>Description: {projectData.description}</h3>
 
-                    {projectData.pledges[0] ? <h3>Pledges:</h3> : ''}
+                    {projectData.pledges[0] ? <h3>Pledges:</h3> : 'No Pledges yet, be the first!'}
 
                     <ul>
                         {projectData.pledges.map((pledgeData, key) => {
@@ -89,6 +98,11 @@ function ProjectPage() {
                                 <li key={key}>
                                     {/* TODO: trying to extract pledger name the same way owner name was extracted */}
                                     ${pledgeData.amount} from {pledgerName}
+                                    {/* {arrayNames ?
+                                    for (let i = numrows; i <= numrows; i++) {
+                                        arrayNames[i]
+                                    } : ''} */}
+
                                     <br></br>
                                     "{pledgeData.comment}"
                                 </li>
