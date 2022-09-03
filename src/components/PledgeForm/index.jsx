@@ -46,18 +46,24 @@ function PledgeForm() {
 
 
     return (
-        <form>
-            <h2>Pledge to Project:</h2>
-            <div>
-                <label htmlFor="Amount">Amount:</label>
-                <input type="number" id="amount" placeholder="Enter amount" onChange={handleChange} />
+        <div>
+            <div >
+                <h2 >Pledge to Project:</h2>
             </div>
-            <div>
-                <label htmlFor="comment">Comment:</label>
-                <input type="comment" id="comment" placeholder="Comment" onChange={handleChange} />
-            </div>
-            <button type="submit" onClick={handleSubmit} >Pledge!</button>
-        </form>
+            <form>
+                <div className="form-item">
+                    <label htmlFor="Amount">Amount:</label>
+                    <input type="number" id="amount" placeholder="Enter amount" onChange={handleChange} />
+                </div>
+                <div className="form-item">
+                    <label htmlFor="comment">Comment:</label>
+                    <input type="comment" id="comment" placeholder="Comment" onChange={handleChange} />
+                </div>
+                <div className="form-item">
+                    <button type="submit" onClick={handleSubmit} >Pledge!</button>
+                </div>
+            </form>
+        </div >
     );
 }
 

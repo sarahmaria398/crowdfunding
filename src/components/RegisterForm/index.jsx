@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./RegisterForm.css"
 
 function RegisterForm() {
     const navigate = useNavigate()
@@ -42,21 +43,30 @@ function RegisterForm() {
 
 
     return (
-        <form>
-            <div>
-                <label htmlFor="username">Username:</label>
-                <input type="text" id="username" placeholder="Enter username" onChange={handleChange} />
-            </div>
-            <div>
-                <label htmlFor="email">Email:</label>
-                <input type="text" id="email" placeholder="Enter email" onChange={handleChange} />
-            </div>
-            <div>
-                <label htmlFor="password">Password:</label>
-                <input type="password" id="password" placeholder="Password" onChange={handleChange} />
-            </div>
-            <button type="submit" onClick={handleSubmit} >Register</button>
-        </form>
+
+        <div>
+
+            <form >
+                <div >
+                    <h1 id="register-title">Register and Support</h1>
+                    <div className="form-item">
+                        <label htmlFor="username">Username:</label>
+                        <input type="text" id="username" placeholder="Enter username" onChange={handleChange} />
+                    </div>
+                    <div className="form-item">
+                        <label htmlFor="email">Email:</label>
+                        <input type="text" id="email" placeholder="Enter email" onChange={handleChange} />
+                    </div>
+                    <div className="form-item">
+                        <label htmlFor="password">Password:</label>
+                        <input type="password" id="password" placeholder="Password" onChange={handleChange} />
+                    </div>
+                    <div className="form-item">
+                        <button type="submit" onClick={handleSubmit} >Register</button>
+                    </div>
+                </div>
+            </form >
+        </div>
     );
 }
 

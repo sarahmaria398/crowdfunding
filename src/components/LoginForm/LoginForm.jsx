@@ -1,27 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { Auth } from 'aws-amplify';
-// import { useEffect } from "react";
+import "./LoginForm.css"
 
 function LoginForm() {
     const navigate = useNavigate()
 
-    // const [error, setError] = useState(null);
-    // const [username, setUserName] = useState('');
-
-    // useEffect(() => {
-    //     try {
-    //         Auth.currentAuthenticatedUser({
-    //             bypassCache: false
-    //         }).then(user => {
-    //             setUserName(user.username);
-    //             console.log(`Load additiona setting for: ${user.username}`);
-    //         }).catch(err => console.log(err));
-    //     }
-    //     catch (e) {
-    //         setError(e);
-    //     }
-    // }, []);
 
     const [credentials, setCredentials] = useState({
         username: "",
@@ -67,14 +50,19 @@ function LoginForm() {
     return (
         <form>
             <div>
-                <label htmlFor="username">Username:</label>
-                <input type="text" id="username" placeholder="Enter username" onChange={handleChange} />
+                <h1 id="login-title">Login</h1>
+                <div className="form-item">
+                    <label htmlFor="username">Username:</label>
+                    <input type="text" id="username" placeholder="Enter username" onChange={handleChange} />
+                </div>
+                <div className="form-item">
+                    <label htmlFor="password">Password:</label>
+                    <input type="password" id="password" placeholder="Password" onChange={handleChange} />
+                </div>
+                <div className="form-item">
+                    <button type="submit" onClick={handleSubmit} >Login</button>
+                </div>
             </div>
-            <div>
-                <label htmlFor="password">Password:</label>
-                <input type="password" id="password" placeholder="Password" onChange={handleChange} />
-            </div>
-            <button type="submit" onClick={handleSubmit} >Login</button>
         </form>
     );
 }

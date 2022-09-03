@@ -98,6 +98,10 @@ h3 {
   width: 40%;
 }
 
+#pledge h2 {
+  font-size: 2rem;
+}
+
 
 #hero-banner-text h1 {
   font-size: 7rem;
@@ -149,10 +153,10 @@ h3 {
   font-family: 'Aboreto', cursive;
 }
 
-form {
+/* form {
   margin: 50px auto;
   width: 90%;
-}
+} */
 
 #user-list {
   display: flex;
@@ -169,10 +173,6 @@ form {
   padding-bottom: 5rem;
 }
 
-#login-pledge-button {
-  max-height: 20px;
-  ;
-}
 
 #button {
   padding-top: 15rem;
