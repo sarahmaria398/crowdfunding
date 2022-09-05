@@ -1,13 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import PledgeForm from "../components/PledgeForm";
-// import { CurrentUser } from "../Context";
 
 function ProjectPage() {
-    console.log(" ")
-    console.log(" ")
-    console.log(" ")
-    console.log(" ")
     const token = window.localStorage.getItem("token")
     const [projectData, setProjectData] = useState({ pledges: [] });
     const [userName, setUserName] = useState("");
@@ -15,22 +10,29 @@ function ProjectPage() {
     const [totalAmount, setTotalAmount] = useState(0);
     const { id } = useParams();
     const navigate = useNavigate();
-    // const User = useContext(CurrentUser);
+
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
             .then((results) => { return results.json(); })
-            .then((data) => { setProjectData(data); });
+            .then((data) => { setProjectData(data) });
+
+        const total = projectData.pledges
+            .filter(pledge => pledge.project_id == id)
+            .reduce((sum, pledge) => sum + pledge.amount, 0)
+        setTotalAmount(total);
+
     }, []);
+
 
     useEffect(() => {
         if (projectData.owner) {
             fetch(`${process.env.REACT_APP_API_URL}users/${projectData.owner}`)
                 .then((results) => { return results.json(); })
                 .then((data) => { setUserName(data.username); });
+
         }
     }, [projectData]);
-
 
     useEffect(() => {
         if (projectData.pledges.length > 0)
@@ -41,19 +43,8 @@ function ProjectPage() {
                         .then((results) => { console.log(results); return results.json(); })
                         .then((data) => { console.log("data username: ", data.username); setPledgerNames(() => [...pledgerNames, data.username]) })
                 }
-
-                if (projectData.pledges?.[i]?.amount) {
-                    fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
-                        .then((results) => { console.log(results); return results.json(); })
-                        .then((data) => { setTotalAmount(data.pledges.amount); console.log("total amount", totalAmount) })
-                }
             }
     }, [projectData]);
-
-    console.log("project data pledges", projectData.pledges)
-    console.log("pledgers name", pledgerNames)
-
-    // TODO: use my delete, render it conditionally: only if the logged in user is the project owner 
 
 
     const handleDelete = (e) => {
@@ -84,8 +75,7 @@ function ProjectPage() {
             <div id="project-page-container">
                 <div id="project-page">
                     <h2>Project Goal: ${projectData.goal}</h2>
-                    {/* TODO: how to show variable which capture the continual increase of Pledge amount */}
-                    <h3>{totalAmount}amount raised of ${projectData.goal}</h3>
+                    <h3> ${totalAmount} amount raised of ${projectData.goal}</h3>
                     <img src={projectData.image} alt="project" />
                     <h3>Description: {projectData.description}</h3>
 
@@ -107,7 +97,7 @@ function ProjectPage() {
 
                     <div id="owner-style">
                         <h3 >Creator: </h3>
-                        <a href={"/users/" + projectData.owner}><h3>  {userName}</h3></a>
+                        <a href={"/users/" + projectData.owner}><h3>  {userName} </h3></a>
                     </div>
                     {window.localStorage.getItem('token') ? <div>
                         <button onClick={handleDelete}>delete</button>
