@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./LoginForm.css"
+
 
 function LoginForm() {
     const navigate = useNavigate()
@@ -50,7 +50,7 @@ function LoginForm() {
     return (
         <form>
             <div>
-                <h1 id="login-title">Login</h1>
+                <h1 id="form-title">Login</h1>
                 <div className="form-item">
                     <label htmlFor="username">Username:</label>
                     <input type="text" id="username" placeholder="Enter username" onChange={handleChange} />

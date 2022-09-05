@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
+
 function CreateProject() {
     const token = window.localStorage.getItem("token")
     const navigate = useNavigate();
@@ -52,25 +53,28 @@ function CreateProject() {
     return (
         <div>
             <form>
-                <div>
+                <h1 id="form-title">Create New Project</h1>
+                <div className="form-item">
                     <label htmlFor="title">Title:</label>
                     <input type="text" id="title" placeholder="Title" onChange={handleChange} />
                 </div>
-                <div>
+                <div className="form-item">
                     <label htmlFor="description">Description:</label>
                     <input type="text" id="description" placeholder="Description" onChange={handleChange} />
                 </div>
-                <div>
+                <div className="form-item">
                     <label htmlFor="goal">Goal (in dollars):</label>
                     <input type="number" id="goal" placeholder="Goal" onChange={handleChange} />
                 </div>
-                <div>
+                <div className="form-item">
                     <label htmlFor="image">URL Image:</label>
                     <input type="text" id="image" placeholder="Image Url" onChange={handleChange} />
                 </div>
-                <button type="submit" onClick={handleSubmit}>
-                    Create Project
-                </button>
+                <div className="form-item">
+                    <button type="submit" onClick={handleSubmit}>
+                        Create Project
+                    </button>
+                </div>
             </form>
         </div>
     )

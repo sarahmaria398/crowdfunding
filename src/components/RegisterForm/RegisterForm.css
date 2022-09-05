@@ -45,7 +45,13 @@ form {
     width: 100px;
 }
 
-#register-title {
+#form-title {
+    text-align: center;
+    padding-bottom: 2rem;
+    font-family: 'Aboreto', cursive;
+}
+
+#pledge-form-title {
     text-align: center;
     padding-bottom: 2rem;
 }

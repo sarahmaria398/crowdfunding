@@ -109,9 +109,9 @@ function ProjectPage() {
                         <h3 >Creator: </h3>
                         <a href={"/users/" + projectData.owner}><h3>  {userName}</h3></a>
                     </div>
-
-                    <button onClick={handleDelete}>delete</button>
-                    <h5>You will only be able to delete if you own the project!</h5>
+                    {window.localStorage.getItem('token') ? <div>
+                        <button onClick={handleDelete}>delete</button>
+                        <h5>You will only be able to delete if you own the project!</h5> </div> : ''}
 
                 </div>
                 {window.localStorage.getItem('token') ?

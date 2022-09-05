@@ -48,7 +48,7 @@ function RegisterForm() {
 
             <form >
                 <div >
-                    <h1 id="register-title">Register and Support</h1>
+                    <h1 id="form-title">Register and Support</h1>
                     <div className="form-item">
                         <label htmlFor="username">Username:</label>
                         <input type="text" id="username" placeholder="Enter username" onChange={handleChange} />
