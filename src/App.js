@@ -11,14 +11,12 @@ import RegisterPage from './pages/RegisterPage';
 import "./App.css";
 import UpdateProjectPage from './pages/UpdateProjectPage';
 import UsersPage from './pages/UsersPage';
-import { CurrentUser } from './Context';
 
 
 function App() {
   return (
     <Router>
       <div >
-        {/* <CurrentUser> */}
         <Nav />
         <Routes >
           <Route exact path="/" element={<HomePage />}>
@@ -36,7 +34,6 @@ function App() {
           <Route exact path="/users/:id" element={<UsersPage />}>
           </Route>
         </Routes>
-        {/* </CurrentUser> */}
       </div>
       <Footer />
     </Router >
