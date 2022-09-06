@@ -19,26 +19,21 @@ function ProjectPage() {
 
     }, []);
 
-    console.log("project data pledges: ", projectData.pledges)
-
-
     useEffect(() => {
+
         if (projectData.owner) {
             fetch(`${process.env.REACT_APP_API_URL}users/${projectData.owner}`)
                 .then((results) => { return results.json(); })
                 .then((data) => { setUserName(data.username); });
 
         }
-    }, [projectData]);
-
-    useEffect(() => {
         if (projectData.pledges.length > 0)
             for (let i = 0; i <= projectData.pledges.length; i++) {
 
                 if (projectData.pledges?.[i]?.supporter) {
                     fetch(`${process.env.REACT_APP_API_URL}users/${projectData.pledges[i].supporter}`)
                         .then((results) => { console.log(results); return results.json(); })
-                        .then((data) => { console.log("data username: ", data.username); setPledgerNames(() => [...pledgerNames, data.username]) })
+                        .then((data) => { console.log("data username: ", data.username); setPledgerNames([...pledgerNames, data.username]) })
                 }
 
                 const total = projectData.pledges
