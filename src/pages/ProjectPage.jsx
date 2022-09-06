@@ -17,12 +17,9 @@ function ProjectPage() {
             .then((results) => { return results.json(); })
             .then((data) => { setProjectData(data) });
 
-        const total = projectData.pledges
-            .filter(pledge => pledge.project_id == id)
-            .reduce((sum, pledge) => sum + pledge.amount, 0)
-        setTotalAmount(total);
-
     }, []);
+
+    console.log("project data pledges: ", projectData.pledges)
 
 
     useEffect(() => {
@@ -43,6 +40,10 @@ function ProjectPage() {
                         .then((results) => { console.log(results); return results.json(); })
                         .then((data) => { console.log("data username: ", data.username); setPledgerNames(() => [...pledgerNames, data.username]) })
                 }
+
+                const total = projectData.pledges
+                    .reduce((sum, pledge) => sum + pledge.amount, 0)
+                setTotalAmount(total);
             }
     }, [projectData]);
 
