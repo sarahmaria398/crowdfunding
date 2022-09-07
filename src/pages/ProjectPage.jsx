@@ -7,7 +7,6 @@ function ProjectPage() {
     const token = window.localStorage.getItem("token")
     const [projectData, setProjectData] = useState({ pledges: [] });
     const [userName, setUserName] = useState("");
-    const [pledgerNames, setPledgerNames] = useState([]);
     const [totalAmount, setTotalAmount] = useState(0);
     const { id } = useParams();
     const navigate = useNavigate();
@@ -20,7 +19,6 @@ function ProjectPage() {
     }, []);
 
     useEffect(() => {
-
         if (projectData.owner) {
             fetch(`${process.env.REACT_APP_API_URL}users/${projectData.owner}`)
                 .then((results) => { return results.json(); })
@@ -72,7 +70,6 @@ function ProjectPage() {
                     <ul>
                         {projectData.pledges.map((pledgeData, index) => {
                             return (
-
                                 <li key={index}>
                                     ${pledgeData.amount} from {" "}
                                     <PledgerDetail supporter={pledgeData.supporter} />

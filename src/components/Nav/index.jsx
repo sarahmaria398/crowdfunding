@@ -12,17 +12,22 @@ function Nav() {
     }
 
     return (
-        <nav>
-            <Link to="/">Crowdfunding</Link>
-            <Link to="/">Home </Link>
-            {window.localStorage.getItem('token') ?
-                <> <Link to="/create-project">Create Project </Link>
-                    <Link to="/" onClick={logOut}>Logout</Link>
-                </>
-                : <>
-                    <Link to="/register">Register </Link>
-                    <Link to="/login">Login </Link></>}
-        </nav >
+        <section className="navbar">
+            <nav className="left-menu">
+                <Link className="button" to="/">Game Now</Link>
+            </nav>
+            <nav className="right-menu">
+                <Link className="button" to="/">Home </Link>
+
+                {window.localStorage.getItem('token') ?
+                    <> <Link className="button" to="/create-project">Create Project </Link>
+                        <Link className="button" to="/" onClick={logOut}>Logout</Link>
+                    </>
+                    : <>
+                        <Link className="button" to="/register">Register </Link>
+                        <Link className="button" to="/login">Login </Link></>}
+            </nav >
+        </section >
     )
 }
 
