@@ -49,6 +49,8 @@ function LoginForm() {
 
     return (
         <form>
+            <br></br>
+            <br></br>
             <div>
                 <h1 id="form-title">Login</h1>
                 <div className="form-item">
@@ -63,6 +65,22 @@ function LoginForm() {
                     <button type="submit" onClick={handleSubmit} >Login</button>
                 </div>
             </div>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
         </form>
     );
 }

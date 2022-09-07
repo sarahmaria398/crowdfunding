@@ -52,6 +52,8 @@ function CreateProject() {
 
     return (
         <div>
+            <br></br>
+            <br></br>
             <form>
                 <h1 id="form-title">Create New Project</h1>
                 <div className="form-item">
@@ -76,6 +78,17 @@ function CreateProject() {
                     </button>
                 </div>
             </form>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
         </div>
     )
 }

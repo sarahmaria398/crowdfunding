@@ -91,11 +91,11 @@ function ProjectPage() {
                     <div id="pledge">
                         <PledgeForm />
                     </div> :
-                    <Link type="button" to="/login">Login to Pledge!</Link>
+                    <Link type="button" className="button" to="/login">Login to Pledge!</Link>
                 }
             </div>
             <div id="project-page-container-bottom">
-                <Link to="/">View More Projects</Link>
+                <Link className="button" to="/">View More Projects</Link>
             </div>
         </div>
 

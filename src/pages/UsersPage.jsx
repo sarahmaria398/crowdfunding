@@ -19,6 +19,14 @@ function UsersPage() {
                 <h3>{users.username}</h3>
                 <h4>{users.bio}</h4>
             </div>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
         </div>
     )
 }

@@ -3,10 +3,15 @@ import { Link } from "react-router-dom";
 import './Footer.css'
 
 function Footer() {
+
     return (
         <footer>
-            <Link to="/">Home </Link>
-            <Link to="/login">Login </Link>
+            <nav >
+                <a href="https://sarahmaria398.github.io/index.html" target="_blank">
+                    &copy;2022 Sarah Maria
+                </a>
+
+            </nav>
         </footer>
     )
 }

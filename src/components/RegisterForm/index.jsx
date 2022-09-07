@@ -48,6 +48,8 @@ function RegisterForm() {
 
             <form >
                 <div >
+                    <br></br>
+                    <br></br>
                     <h1 id="form-title">Register and Support</h1>
                     <div className="form-item">
                         <label htmlFor="username">Username:</label>
@@ -66,6 +68,18 @@ function RegisterForm() {
                     </div>
                 </div>
             </form >
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
         </div>
     );
 }

@@ -166,12 +166,17 @@ h3 {
 #project-page-container-bottom {
   text-align: center;
   padding-bottom: 5rem;
+  justify-content: center;
+  color: var(--color-primary);
+  font-family: var(--regular);
+  text-decoration: none;
+  border-radius: 6px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
-
-#button {
-  padding-top: 15rem;
-}
 
 .example_g {
   /* font-family: 'SANS SERIF'; */
