@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import PledgeForm from "../components/PledgeForm";
+import PledgerDetail from "../components/PledgerDetail";
 
 function ProjectPage() {
     const token = window.localStorage.getItem("token")
@@ -10,7 +11,6 @@ function ProjectPage() {
     const [totalAmount, setTotalAmount] = useState(0);
     const { id } = useParams();
     const navigate = useNavigate();
-
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
@@ -25,17 +25,9 @@ function ProjectPage() {
             fetch(`${process.env.REACT_APP_API_URL}users/${projectData.owner}`)
                 .then((results) => { return results.json(); })
                 .then((data) => { setUserName(data.username); });
-
         }
         if (projectData.pledges.length > 0)
             for (let i = 0; i <= projectData.pledges.length; i++) {
-
-                if (projectData.pledges?.[i]?.supporter) {
-                    fetch(`${process.env.REACT_APP_API_URL}users/${projectData.pledges[i].supporter}`)
-                        .then((results) => { console.log(results); return results.json(); })
-                        .then((data) => { console.log("data username: ", data.username); setPledgerNames([...pledgerNames, data.username]) })
-                }
-
                 const total = projectData.pledges
                     .reduce((sum, pledge) => sum + pledge.amount, 0)
                 setTotalAmount(total);
@@ -80,12 +72,10 @@ function ProjectPage() {
                     <ul>
                         {projectData.pledges.map((pledgeData, index) => {
                             return (
+
                                 <li key={index}>
-
-                                    ${pledgeData.amount} from {pledgerNames[index]}
-
-                                    <br></br>
-                                    "{pledgeData.comment}"
+                                    ${pledgeData.amount} from {" "}
+                                    <PledgerDetail supporter={pledgeData.supporter} />
                                 </li>
                             );
                         })}
