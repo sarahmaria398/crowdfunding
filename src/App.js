@@ -11,32 +11,36 @@ import RegisterPage from './pages/RegisterPage';
 import "./App.css";
 import UpdateProjectPage from './pages/UpdateProjectPage';
 import UsersPage from './pages/UsersPage';
+import Loader from './components/Loader';
 
 
 function App() {
   return (
-    <Router>
-      <div >
-        <Nav />
-        <Routes >
-          <Route exact path="/" element={<HomePage />}>
-          </Route>
-          <Route path="/login" element={<LoginPage />} >
-          </Route>
-          <Route exact path="/projects/:id" element={<ProjectPage />}>
-          </Route>
-          <Route exact path="/create-project" element={<CreateProjectPage />}>
-          </Route>
-          <Route exact path="/register" element={<RegisterPage />}>
-          </Route>
-          <Route exact path="/projects/:id" element={<UpdateProjectPage />}>
-          </Route>
-          <Route exact path="/users/:id" element={<UsersPage />}>
-          </Route>
-        </Routes>
-      </div>
-      <Footer />
-    </Router >
+    <div>
+      {/* <Loader></Loader> */}
+      <Router>
+        <div >
+          <Nav />
+          <Routes >
+            <Route exact path="/" element={<HomePage />}>
+            </Route>
+            <Route path="/login" element={<LoginPage />} >
+            </Route>
+            <Route exact path="/projects/:id" element={<ProjectPage />}>
+            </Route>
+            <Route exact path="/create-project" element={<CreateProjectPage />}>
+            </Route>
+            <Route exact path="/register" element={<RegisterPage />}>
+            </Route>
+            <Route exact path="/projects/:id" element={<UpdateProjectPage />}>
+            </Route>
+            <Route exact path="/users/:id" element={<UsersPage />}>
+            </Route>
+          </Routes>
+        </div>
+        <Footer />
+      </Router >
+    </div>
   );
 }
 

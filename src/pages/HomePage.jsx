@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { allProjects } from "../data";
 import ProjectCard from "../components/ProjectCard";
+import Loader from "../components/Loader";
 
 function HomePage() {
     const [projectData, updateProjectData] = useState([])
@@ -11,12 +12,10 @@ function HomePage() {
             .then(data => { updateProjectData(data) })
     }, [])
 
-    if (!projectData) {
-        return "Projects loading..."
-    }
 
     return (
         <div>
+            {/* <Loader project={projectData}></Loader> */}
             <div id="hero-banner">
                 <div id="hero-banner-text">
                     <h1>Game Now</h1>

@@ -3,7 +3,6 @@ import { useParams, Link } from "react-router-dom";
 
 function UsersPage() {
     const { id } = useParams();
-
     const [users, updateUsers] = useState([])
 
     useEffect(() => {
@@ -11,6 +10,8 @@ function UsersPage() {
             .then(res => res.json())
             .then(data => updateUsers(data))
     }, [])
+
+
 
     return (
         <div>
