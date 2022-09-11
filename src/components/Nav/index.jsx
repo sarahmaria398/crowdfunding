@@ -10,8 +10,8 @@ function Nav() {
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}users/${username}`)
             .then(res => res.json())
-            .then(data => { setUserData(data); })
-    }, [])
+            .then(data => { setUserData(data); console.log(data) })
+    }, [username])
 
     console.log("userData id: ", userData.id)
 
@@ -30,9 +30,9 @@ function Nav() {
             <nav className="right-menu">
 
 
-                {window.localStorage.getItem('token') ?
+                {window.localStorage.getItem('username') ?
                     <>
-                        <Link className="button" to="/">Welcome {userData.username} </Link>
+                        <Link className="button" to="/">Welcome {username} </Link>
                         <Link className="button" to="/create-project">Create Project </Link>
                         <Link className="button" to="/" onClick={logOut}>Logout</Link>
                     </>
