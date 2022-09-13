@@ -32,8 +32,6 @@ function App() {
             </Route>
             <Route exact path="/register" element={<RegisterPage />}>
             </Route>
-            <Route exact path="/projects/:id" element={<UpdateProjectPage />}>
-            </Route>
             <Route exact path="/users/:id" element={<UsersPage />}>
             </Route>
           </Routes>

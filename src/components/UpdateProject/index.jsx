@@ -2,17 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import ProjectCard from "../ProjectCard";
 
-function UpdateProject() {
+function UpdateForm({ title, description, goal, image }) {
     const token = window.localStorage.getItem("token")
     const [projectData, setProjectData] = useState({});
     const { id } = useParams();
     const navigate = useNavigate();
 
-    useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
-            .then((results) => { return results.json(); })
-            .then((data) => { setProjectData(data); });
-    }, []);
 
     const handleChange = (e) => {
         const { id, value } = e.target;
@@ -37,7 +32,7 @@ function UpdateProject() {
                 );
                 const data = await response.json();
                 console.log(data)
-                navigate(`/projects/${data.id}`);
+                navigate(`/projects/${id}`);
             } catch (err) {
                 console.log(err)
             }
@@ -55,19 +50,19 @@ function UpdateProject() {
             <form>
                 <div>
                     <label htmlFor="title">Title:</label>
-                    <input type="text" id="title" placeholder={projectData.title} onChange={handleChange} />
+                    <input type="text" id="title" value={title} onChange={handleChange} />
                 </div>
                 <div>
                     <label htmlFor="description">Description:</label>
-                    <input type="text" id="description" placeholder={projectData.description} onChange={handleChange} />
+                    <input type="text" id="description" value={description} onChange={handleChange} />
                 </div>
                 <div>
                     <label htmlFor="goal">Goal:</label>
-                    <input type="time" id="goal" placeholder="Goal" onChange={handleChange} />
+                    <input type="number" id="goal" value={goal} onChange={handleChange} />
                 </div>
                 <div>
                     <label htmlFor="image">URL Image:</label>
-                    <input type="text" id="image" placeholder="Image Url" onChange={handleChange} />
+                    <input type="text" id="image" value={image} onChange={handleChange} />
                 </div>
                 <button type="submit" onClick={handleSubmit}>
                     Update Project
@@ -78,4 +73,4 @@ function UpdateProject() {
 
 }
 
-export default UpdateProject;
+export default UpdateForm;

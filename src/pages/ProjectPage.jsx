@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import PledgeForm from "../components/PledgeForm";
 import PledgerDetail from "../components/PledgerDetail";
+import UpdateForm from "../components/UpdateProject";
+import UpdateProjectPage from "./UpdateProjectPage";
 
 function ProjectPage() {
     const token = window.localStorage.getItem("token")
     const [projectData, setProjectData] = useState({ pledges: [] });
     const [userName, setUserName] = useState("");
     const [totalAmount, setTotalAmount] = useState(0);
+    const [showUpdateForm, setShowUpdateForm] = useState(false)
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -84,7 +87,14 @@ function ProjectPage() {
                     </div>
                     {window.localStorage.getItem('token') ? <div>
                         <button onClick={handleDelete}>delete</button>
-                        <h5>You will only be able to delete if you own the project!</h5> </div> : ''}
+                        <h5>You will only be able to delete if you own the project!</h5>
+                        <button onClick={() => setShowUpdateForm(!showUpdateForm)}>update</button>
+                    </div>
+                        : null}
+
+                    {showUpdateForm ?
+                        <UpdateForm title={projectData.title} description={projectData.description} goal={projectData.goal} image={projectData.image} />
+                        : null}
 
                 </div>
                 {window.localStorage.getItem('token') ?
