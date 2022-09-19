@@ -73,6 +73,7 @@ function ProjectPage() {
                                 <li key={index}>
                                     ${pledgeData.amount} from {" "}
                                     <PledgerDetail supporter={pledgeData.supporter} />
+                                    {" "} "{pledgeData.comment}"
                                 </li>
                             );
                         })}
