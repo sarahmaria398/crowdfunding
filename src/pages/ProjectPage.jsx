@@ -65,74 +65,52 @@ function ProjectPage() {
     return (
         <div>
             <h2 id="project-title">{projectData.title} </h2>
-
-            {loading ? <LoadingSpinner /> :
-                <div>
-                    <div id="project-page-container">
-                        <div id="project-page">
-                            <h2>Project Goal: ${projectData.goal}</h2>
-                            <h3> ${totalAmount} amount raised of ${projectData.goal}</h3>
-                            <img src={projectData.image} alt="project" />
-                            <h3>Description: {projectData.description}</h3>
-
-                            {projectData.pledges[0] ? <h3>Pledges:</h3> : <p>No Pledges yet, be the first!</p>}
-
-                            <ul>
-                                {projectData.pledges.map((pledgeData, index) => {
-                                    return (
-                                        <li key={index}>
-                                            ${pledgeData.amount} from {" "}
-                                            <PledgerDetail supporter={pledgeData.supporter} />
-                                            {" "} "{pledgeData.comment}"
-                                        </li>
-                                    );
-                                })}
-                            </ul>
+            <div id="project-page-container">
 
 
-                            {window.localStorage.getItem('token') ?
-                                <div>
+                <div id="project-page">
+                    <h2>Project Goal: ${projectData.goal}</h2>
+                    <h3> ${totalAmount} amount raised of ${projectData.goal}</h3>
+                    <img src={projectData.image} alt="project" />
+                    <h3>Description: {projectData.description}</h3>
 
-                                    <div id="owner-style" >
-                                        <h3 >Creator: {"    "}
-                                            <a id="owner" href={"/users/" + projectData.owner} > {userName} </a></h3>
-                                    </div>
-                                </div>
+                    {projectData.pledges[0] ? <h3>Pledges:</h3> : 'No Pledges yet, be the first!'}
 
-                                : null}
+                    <ul>
+                        {projectData.pledges.map((pledgeData, index) => {
+                            return (
+                                <li key={index}>
+                                    ${pledgeData.amount} from {" "}
+                                    <PledgerDetail supporter={pledgeData.supporter} />
+                                    {" "}"{pledgeData.comment}"
+                                </li>
+                            );
+                        })}
+                    </ul>
 
-                            {window.localStorage.getItem("username") === userName ?
-
-                                <div>
-                                    <a id="button" onClick={handleDelete}>Delete</a>
-
-                                    <a className="button" onClick={() => setShowUpdateForm(!showUpdateForm)}>Update</a></div>
-                                : null}
-
-                            {showUpdateForm ?
-                                <UpdateForm title={projectData.title} description={projectData.description} goal={projectData.goal} image={projectData.image}
-                                /> : null}
-
-
-
-
-
-
-
-                        </div>
-                        {window.localStorage.getItem('token') ?
-                            <div id="pledge">
-                                <PledgeForm />
-                            </div> :
-                            <Link type="button" className="button" to="/login">Login to Pledge!</Link>
-                        }
+                    <div id="owner-style">
+                        <h3 >Creator: </h3>
+                        <a href={"/users/" + projectData.owner}><h3>  {userName} </h3></a>
                     </div>
 
-                    <div id="project-page-container-bottom">
-                        <Link className="button" to="/">View More Projects</Link>
-                    </div>
+
+                    {window.localStorage.getItem('token') ? <div>
+                        <button onClick={handleDelete}>delete</button>
+                        <h6>You will only be able to delete if you own the project!</h6> </div> : ''}
                 </div>
-            }
+
+
+                {window.localStorage.getItem('token') ?
+                    <div id="pledge">
+                        <PledgeForm />
+                    </div> :
+                    <Link type="button" className="button" to="/login">Login to Pledge!</Link>
+                }
+            </div>
+            <div id="project-page-container-bottom">
+                <Link className="button" to="/">View More Projects</Link>
+            </div>
+
         </div>
 
 

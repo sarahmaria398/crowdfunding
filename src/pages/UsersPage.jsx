@@ -11,7 +11,6 @@ function UsersPage() {
             .then(data => updateUsers(data))
     }, [])
 
-
     if (window.localStorage.getItem('token')) {
         return (
             <div>
@@ -29,7 +28,6 @@ function UsersPage() {
                 <br></br>
                 <br></br>
             </div>
-
         )
     }
     else { return <div><p>No data for you!</p><br></br><Link className="button" to="/login">Please Log in</Link><br></br></div> }
