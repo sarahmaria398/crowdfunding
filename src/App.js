@@ -9,7 +9,7 @@ import Footer from './components/Footer';
 import CreateProjectPage from './pages/CreateProjectPage';
 import RegisterPage from './pages/RegisterPage';
 import "./App.css";
-import UpdateProjectPage from './pages/UpdateProjectPage';
+import PageNotFound from './pages/NotFoundPage';
 import UsersPage from './pages/UsersPage';
 
 
@@ -19,20 +19,13 @@ function App() {
       <div >
         <Nav />
         <Routes >
-          <Route exact path="/" element={<HomePage />}>
-          </Route>
-          <Route path="/login" element={<LoginPage />} >
-          </Route>
-          <Route exact path="/projects/:id" element={<ProjectPage />}>
-          </Route>
-          <Route exact path="/create-project" element={<CreateProjectPage />}>
-          </Route>
-          <Route exact path="/register" element={<RegisterPage />}>
-          </Route>
-          <Route exact path="/projects/:id" element={<UpdateProjectPage />}>
-          </Route>
-          <Route exact path="/users/:id" element={<UsersPage />}>
-          </Route>
+          <Route exact path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route exact path="/projects/:id" element={<ProjectPage />} />
+          <Route exact path="/create-project" element={<CreateProjectPage />} />
+          <Route exact path="/register" element={<RegisterPage />} />
+          <Route exact path="/users/:id" element={<UsersPage />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </div>
       <Footer />
