@@ -3,7 +3,6 @@ import { useParams, Link } from "react-router-dom";
 
 function UsersPage() {
     const { id } = useParams();
-
     const [users, updateUsers] = useState([])
 
     useEffect(() => {
@@ -32,6 +31,7 @@ function UsersPage() {
         )
     }
     else { return <div><p>No data for you!</p><br></br><Link className="button" to="/login">Please Log in</Link><br></br></div> }
+
 }
 
 export default UsersPage;

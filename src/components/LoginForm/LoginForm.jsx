@@ -1,10 +1,10 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 
 function LoginForm() {
     const navigate = useNavigate()
-
 
     const [credentials, setCredentials] = useState({
         username: "",
@@ -30,19 +30,28 @@ function LoginForm() {
                 body: JSON.stringify(credentials),
             }
         );
-        return response.json()
+        return response
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (credentials.username && credentials.password) {
-            postData().then((response) => {
-                // const thisUser = await Parse.User.currentAsync();
-                window.localStorage.setItem("token", response.token);
-                console.log("logged in")
-                // console.log({ thisUser })
-                navigate("/");
-            });
+            postData()
+                .then((response) => {
+                    if (response.ok) {
+                        localStorage.setItem("token", response.token);
+                        console.log(response.status);
+                        localStorage.setItem('username', credentials.username);
+                        console.log("logged in", localStorage.getItem('username'), localStorage.getItem('token'));
+                        navigate("/");
+                    }
+                    else {
+                        console.log("log-in failed")
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
         }
     };
 

@@ -1,8 +1,8 @@
-import React from "react";
-import UpdateProject from "../components/UpdateProject";
+// import React from "react";
+// import UpdateForm from "../components/UpdateProject";
 
-function UpdateProjectPage() {
-    return <UpdateProject />;
-}
+// function UpdateProjectPage() {
+//     return;
+// }
 
-export default UpdateProjectPage;
+// export default UpdateProjectPage;

@@ -2,19 +2,26 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import PledgeForm from "../components/PledgeForm";
 import PledgerDetail from "../components/PledgerDetail";
+import UpdateForm from "../components/UpdateProject";
+import UpdateProjectPage from "./UpdateProjectPage";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 function ProjectPage() {
     const token = window.localStorage.getItem("token")
+    const username = window.localStorage.getItem("username")
+    const [loading, setLoading] = useState(false);
     const [projectData, setProjectData] = useState({ pledges: [] });
     const [userName, setUserName] = useState("");
     const [totalAmount, setTotalAmount] = useState(0);
+    const [showUpdateForm, setShowUpdateForm] = useState(false)
     const { id } = useParams();
     const navigate = useNavigate();
 
     useEffect(() => {
+        setLoading(true);
         fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
             .then((results) => { return results.json(); })
-            .then((data) => { setProjectData(data) });
+            .then((data) => { setProjectData(data); setLoading(false); });
 
     }, []);
 
@@ -103,6 +110,7 @@ function ProjectPage() {
             <div id="project-page-container-bottom">
                 <Link className="button" to="/">View More Projects</Link>
             </div>
+
         </div>
 
 

@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { allProjects } from "../data";
 import ProjectCard from "../components/ProjectCard";
+import LoadingSpinner from "../components/LoadingSpinner";
+
 
 function HomePage() {
     const [projectData, updateProjectData] = useState([])
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        setLoading(true);
         fetch(`${process.env.REACT_APP_API_URL}projects`)
             .then(res => res.json())
-            .then(data => { updateProjectData(data) })
+            .then(data => { updateProjectData(data); setLoading(false); })
     }, [])
 
-    if (!projectData) {
-        return "Projects loading..."
-    }
 
     return (
         <div>
@@ -27,12 +28,19 @@ function HomePage() {
             <div id="projects">
                 <h1>Browse New Games</h1>
 
-                <div id="project-list">
-                    {projectData.map((project, index) => {
-                        return <ProjectCard key={index} projectData={project} />;
-                    })}
-                </div>
+                {loading ? <LoadingSpinner /> :
+                    <div>
+
+                        <div id="project-list">
+                            {projectData.map((project, index) => {
+                                return <ProjectCard key={index} projectData={project} />;
+                            })}
+                        </div>
+                    </div>
+                }
+
             </div>
+
         </div>
     )
 }
