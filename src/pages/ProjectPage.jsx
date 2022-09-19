@@ -59,6 +59,8 @@ function ProjectPage() {
         <div>
             <h2 id="project-title">{projectData.title} </h2>
             <div id="project-page-container">
+
+
                 <div id="project-page">
                     <h2>Project Goal: ${projectData.goal}</h2>
                     <h3> ${totalAmount} amount raised of ${projectData.goal}</h3>
@@ -73,6 +75,7 @@ function ProjectPage() {
                                 <li key={index}>
                                     ${pledgeData.amount} from {" "}
                                     <PledgerDetail supporter={pledgeData.supporter} />
+                                    {" "}"{pledgeData.comment}"
                                 </li>
                             );
                         })}
@@ -82,11 +85,14 @@ function ProjectPage() {
                         <h3 >Creator: </h3>
                         <a href={"/users/" + projectData.owner}><h3>  {userName} </h3></a>
                     </div>
+
+
                     {window.localStorage.getItem('token') ? <div>
                         <button onClick={handleDelete}>delete</button>
-                        <h5>You will only be able to delete if you own the project!</h5> </div> : ''}
-
+                        <h6>You will only be able to delete if you own the project!</h6> </div> : ''}
                 </div>
+
+
                 {window.localStorage.getItem('token') ?
                     <div id="pledge">
                         <PledgeForm />
