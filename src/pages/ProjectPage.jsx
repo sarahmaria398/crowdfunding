@@ -79,13 +79,27 @@ function ProjectPage() {
                         })}
                     </ul>
 
-                    <div id="owner-style">
-                        <h3 >Creator: </h3>
-                        <a href={"/users/" + projectData.owner}><h3>  {userName} </h3></a>
-                    </div>
-                    {window.localStorage.getItem('token') ? <div>
-                        <button onClick={handleDelete}>delete</button>
-                        <h5>You will only be able to delete if you own the project!</h5> </div> : ''}
+                    {window.localStorage.getItem('token') ?
+                        <div>
+
+                            <div id="owner-style" >
+                                <h3 >Creator: {"    "}
+                                    <a id="owner" href={"/users/" + projectData.owner} > {userName} </a></h3>
+                            </div>
+                        </div>
+
+                        : null}
+
+                    {window.localStorage.getItem("username") === userName ?
+                        <a id="button" onClick={handleDelete}>Delete</a>
+
+                        : null}
+                    {/* <a className="button" onClick={() => setShowUpdateForm(!showUpdateForm)}>Update</a> */}
+                    {/* {showUpdateForm ?
+                        <UpdateForm title={projectData.title} description={projectData.description} goal={projectData.goal} image={projectData.image}
+                        /> : null} */}
+
+
 
                 </div>
                 {window.localStorage.getItem('token') ?
