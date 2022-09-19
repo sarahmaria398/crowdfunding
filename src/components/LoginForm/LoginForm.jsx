@@ -39,10 +39,10 @@ function LoginForm() {
             postData()
                 .then((response) => {
                     if (response.ok) {
-                        window.localStorage.setItem("token", response.token);
+                        localStorage.setItem("token", response.token);
                         console.log(response.status);
                         localStorage.setItem('username', credentials.username);
-                        console.log("logged in", localStorage.getItem('username'));
+                        console.log("logged in", localStorage.getItem('username'), localStorage.getItem('token'));
                         navigate("/");
                     }
                     else {

@@ -10,10 +10,9 @@ function Nav() {
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}users/${username}`)
             .then(res => res.json())
-            .then(data => { setUserData(data); console.log(data) })
+            .then(data => { setUserData(data) })
     }, [username])
 
-    console.log("userData id: ", userData.id)
 
     function logOut() {
         window.localStorage.removeItem('token');

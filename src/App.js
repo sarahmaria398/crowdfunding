@@ -17,7 +17,6 @@ import NotFoundPage from './pages/NotFoundPage';
 function App() {
   return (
     <div>
-      {/* <Loader></Loader> */}
       <Router>
         <div >
           <Nav />

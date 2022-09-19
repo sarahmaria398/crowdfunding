@@ -8,6 +8,7 @@ import LoadingSpinner from "../components/LoadingSpinner";
 
 function ProjectPage() {
     const token = window.localStorage.getItem("token")
+    const username = window.localStorage.getItem("username")
     const [loading, setLoading] = useState(false);
     const [projectData, setProjectData] = useState({ pledges: [] });
     const [userName, setUserName] = useState("");
@@ -88,20 +89,34 @@ function ProjectPage() {
                             </ul>
 
 
-                            {window.localStorage.getItem('token') ? <div>
-                                <div id="owner-style">
-                                    <h3 >Creator: </h3>
-                                    <a href={"/users/" + projectData.owner}><h3>  {userName} </h3></a>
+                            {window.localStorage.getItem('token') ?
+                                <div>
+
+                                    <div id="owner-style">
+                                        <h3 >Creator: </h3>
+                                        <a href={"/users/" + projectData.owner}><h3>  {userName} </h3></a>
+                                    </div>
                                 </div>
-                                <button onClick={handleDelete}>delete</button>
-                                <h5>You will only be able to delete if you own the project!</h5>
-                                <button onClick={() => setShowUpdateForm(!showUpdateForm)}>update</button>
-                            </div>
+
+                                : null}
+
+                            {window.localStorage.getItem("username") === userName ?
+
+                                <div>
+                                    <button onClick={handleDelete}>delete</button>
+
+                                    <button onClick={() => setShowUpdateForm(!showUpdateForm)}>update</button></div>
                                 : null}
 
                             {showUpdateForm ?
-                                <UpdateForm title={projectData.title} description={projectData.description} goal={projectData.goal} image={projectData.image} />
-                                : null}
+                                <UpdateForm title={projectData.title} description={projectData.description} goal={projectData.goal} image={projectData.image}
+                                /> : null}
+
+
+
+
+
+
 
                         </div>
                         {window.localStorage.getItem('token') ?
