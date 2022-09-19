@@ -75,7 +75,7 @@ function ProjectPage() {
                             <img src={projectData.image} alt="project" />
                             <h3>Description: {projectData.description}</h3>
 
-                            {projectData.pledges[0] ? <h3>Pledges:</h3> : 'No Pledges yet, be the first!'}
+                            {projectData.pledges[0] ? <h3>Pledges:</h3> : <p>No Pledges yet, be the first!</p>}
 
                             <ul>
                                 {projectData.pledges.map((pledgeData, index) => {
@@ -83,6 +83,7 @@ function ProjectPage() {
                                         <li key={index}>
                                             ${pledgeData.amount} from {" "}
                                             <PledgerDetail supporter={pledgeData.supporter} />
+                                            {" "} "{pledgeData.comment}"
                                         </li>
                                     );
                                 })}
@@ -92,9 +93,9 @@ function ProjectPage() {
                             {window.localStorage.getItem('token') ?
                                 <div>
 
-                                    <div id="owner-style">
-                                        <h3 >Creator: </h3>
-                                        <a href={"/users/" + projectData.owner}><h3>  {userName} </h3></a>
+                                    <div id="owner-style" >
+                                        <h3 >Creator: {"    "}
+                                            <a id="owner" href={"/users/" + projectData.owner} > {userName} </a></h3>
                                     </div>
                                 </div>
 
@@ -103,9 +104,9 @@ function ProjectPage() {
                             {window.localStorage.getItem("username") === userName ?
 
                                 <div>
-                                    <button onClick={handleDelete}>delete</button>
+                                    <a id="button" onClick={handleDelete}>Delete</a>
 
-                                    <button onClick={() => setShowUpdateForm(!showUpdateForm)}>update</button></div>
+                                    <a className="button" onClick={() => setShowUpdateForm(!showUpdateForm)}>Update</a></div>
                                 : null}
 
                             {showUpdateForm ?

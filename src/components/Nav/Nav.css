@@ -11,7 +11,9 @@
     font-family: 'League Spartan', sans-serif;
 }
 
-.button {
+
+
+.nav-button {
     justify-content: center;
     color: var(--color-primary);
     font-family: var(--regular);
@@ -32,6 +34,6 @@
     ;
 }
 
-.button:hover {
-    color: rgb(73, 127, 210);
+.nav-button:hover {
+    color: rgb(57, 109, 185);
 }

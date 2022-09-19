@@ -31,13 +31,13 @@ function Nav() {
 
                 {window.localStorage.getItem('username') ?
                     <>
-                        <Link className="button" to="/">Welcome {username} </Link>
-                        <Link className="button" to="/create-project">Create Project </Link>
-                        <Link className="button" to="/" onClick={logOut}>Logout</Link>
+                        <Link className="nav-button" to="/">Welcome {username} </Link>
+                        <Link className="nav-button" to="/create-project">Create Project </Link>
+                        <Link className="nav-button" to="/" onClick={logOut}>Logout</Link>
                     </>
                     : <>
-                        <Link className="button" to="/register">Register </Link>
-                        <Link className="button" to="/login">Login </Link></>}
+                        <Link className="nav-button" to="/register">Register </Link>
+                        <Link className="nav-button" to="/login">Login </Link></>}
             </nav >
         </section >
     )

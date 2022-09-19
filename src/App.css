@@ -257,6 +257,11 @@ h3 {
   display: flex;
 }
 
+#owner {
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
 .user-profile {
   padding-top: 5rem;
   display: block;
@@ -296,4 +301,9 @@ h3 {
   100% {
     transform: rotate(360deg);
   }
+}
+
+
+.button:hover {
+  color: rgb(70, 106, 185);
 }
