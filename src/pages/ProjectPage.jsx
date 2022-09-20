@@ -73,14 +73,15 @@ function ProjectPage() {
                                 <li key={index}>
                                     ${pledgeData.amount} from {" "}
                                     <PledgerDetail supporter={pledgeData.supporter} />
+                                    {" "}"{pledgeData.comment}"
                                 </li>
                             );
                         })}
                     </ul>
 
                     <div id="owner-style">
-                        <h3 >Creator: </h3>
-                        <a href={"/users/" + projectData.owner}><h3>  {userName} </h3></a>
+                        <h3 >Creator: {"  "}</h3>
+                        <h3>  {userName} </h3>
                     </div>
                     {window.localStorage.getItem('token') ? <div>
                         <button onClick={handleDelete}>delete</button>
